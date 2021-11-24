@@ -139,13 +139,13 @@
                  )
   )
 
-  (:action pick_gripper_from_rack
+  (:action pick_tool_from_rack
     :parameters (?tool ?conf1 ?conf2 ?traj)
     :precondition (and
                     ; ! state precondition
                     (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (RobotToolChangerEmpty)
-                    (IsGripper ?tool)
+                    (IsTool ?tool)
                     (AtRack ?tool)
                     ; ! sampled
                     (PickToolAction ?tool ?conf1 ?conf2 ?traj)
@@ -154,29 +154,7 @@
                  (not (RobotToolChangerEmpty))
                  ; ! tool status
                  (not (AtRack ?tool))
-                 (RobotGripperEmpty)
-                 ; ! robot conf
-                 (not (RobotAtConf ?conf1))
-                 (RobotAtConf ?conf2)
-                 ; ! switch for move
-                 (CanFreeMove)
-            )
-  )
-
-  (:action pick_clamp_from_rack
-    :parameters (?tool ?conf1 ?conf2 ?traj)
-    :precondition (and
-                    ; ! state precondition
-                    (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
-                    (RobotToolChangerEmpty)
-                    (IsClamp ?tool)
-                    (AtRack ?tool)
-                    ; ! sampled
-                    (PickToolAction ?tool ?conf1 ?conf2 ?traj)
-                  )
-    :effect (and (Attached ?tool)
-                 (not (RobotToolChangerEmpty))
-                 (not (AtRack ?tool))
+                 (when (IsGripper ?tool) (RobotGripperEmpty))
                  ; ! robot conf
                  (not (RobotAtConf ?conf1))
                  (RobotAtConf ?conf2)

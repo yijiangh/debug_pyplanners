@@ -155,13 +155,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--algorithm', default='incremental', help='PDDLSteam planning algorithm.')
     parser.add_argument('--reset_to_home', action='store_true', help='Require all tools to be back on rack as goals.')
-    parser.add_argument('--use_fluents', action='store_false', help='Use fluent facts in stream definitions.')
+    parser.add_argument('--fluents', action='store_false', help='Use fluent facts in stream definitions.')
     args = parser.parse_args()
     print('Arguments:', args)
 
     debug_problem_name = "nine_pieces_process_symbolic.json"
     debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, debug=True, reset_to_home=args.reset_to_home,
-        use_fluents=args.use_fluents)
+        use_fluents=args.fluents)
 
     print()
     print('Goal:', debug_pddl_problem.goal)
