@@ -25,16 +25,10 @@ class EmptyTrajectory(object):
     def __repr__(self):
         return 'Traj-{}'.format(self.tag)
 
-class EmptyConfiguration(object):
-    def __init__(self, tag=''):
-        self.tag = tag
-    def __repr__(self):
-        return 'Conf-{}'.format(self.tag)
-
 ######################################
 
 def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug=False,
-        reset_to_home=True, consider_transition=False, use_fluents=False):
+        reset_to_home=True, use_fluents=False):
     json_file_path = os.path.join(HERE, json_file_name)
     with open(json_file_path, 'r') as f:
         process = json.load(f)
@@ -48,19 +42,10 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
 
     init = []
 
-    home_conf = EmptyConfiguration('Home')
     constant_map = {}
-
     init.extend([
         ('RobotToolChangerEmpty',),
     ])
-    if consider_transition:
-        init.extend([
-        ('ConsiderTransition',),
-        ('RobotConf', home_conf),
-        ('RobotAtConf', home_conf),
-        ('CanFreeMove',),
-        ])
 
     beam_seq = []
     for e_data in process['assembly']['sequence']:
@@ -129,21 +114,13 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
         stream_map = DEBUG
     else:
         stream_map = {
-            'sample-move': from_fn(lambda conf1, conf2: (EmptyTrajectory(),)),
-            'sample-pick-tool': from_fn(lambda obj: (EmptyConfiguration(), EmptyConfiguration(), EmptyTrajectory())),
-            'sample-place-tool': from_fn(lambda obj: (EmptyConfiguration(), EmptyConfiguration(), EmptyTrajectory())),
-            'sample-pick-element': from_fn(lambda obj: (EmptyConfiguration(), EmptyConfiguration(), EmptyTrajectory())),
-            'sample-place-element': from_fn(lambda obj: (EmptyConfiguration(), EmptyConfiguration(), EmptyTrajectory())),
-            # 'inverse-kinematics':  from_fn(lambda p: (p + GRASP,)),
-            # 'test-cfree': from_test(lambda *args: not collision_test(*args)),
+            'sample-place-tool': from_fn(lambda obj: (EmptyTrajectory(),)),
         }
 
     goal_literals = []
     goal_literals.extend(('Assembled', e) for e in beam_seq)
     if reset_to_home:
         goal_literals.extend(('AtRack', t_name) for t_name in list(process['clamps']) + list(process['grippers']))
-        if consider_transition:
-            goal_literals.append(('RobotAtConf', home_conf))
     goal = And(*goal_literals)
 
     pddlstream_problem = PDDLProblem(domain_pddl, constant_map, stream_pddl, stream_map, init, goal)
@@ -160,8 +137,8 @@ def main():
     print('Arguments:', args)
 
     debug_problem_name = "nine_pieces_process_symbolic.json"
-    debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, debug=True, reset_to_home=args.reset_to_home,
-        use_fluents=args.fluents)
+    debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, 
+        debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents)
 
     print()
     print('Goal:', debug_pddl_problem.goal)
