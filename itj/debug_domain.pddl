@@ -44,10 +44,13 @@
     (Assembled ?element)
 
     ;; * derived
-    (Connected ?element)
+    ;; (Connected ?element)
+    (EitherGroundedAllToolAtJoints ?element)
+    (EitherAssembled ?e1 ?e2)
+
+    ; ? equivalent
     (AllToolAtJoints ?element)
     (ExistNoToolAtJoints ?element)
-    (EitherGroundedAllToolAtJoints ?element)
   )
 
   (:action pick_element_from_rack
@@ -177,7 +180,8 @@
                     (IsElement ?element2)
                     (ToolNotOccupiedOnJoint ?tool)
                     (JointToolTypeMatch ?element1 ?element2 ?tool)
-                    (or (Assembled ?element1) (Assembled ?element2))
+                    ;; (or (Assembled ?element1) (Assembled ?element2))
+                    (EitherAssembled ?element1 ?element2)
                     (NoToolAtJoint ?element1 ?element2)
                     ; ! assembly state precondition
                     ; ! sampled
@@ -205,34 +209,49 @@
   ;;  )
   ;; )
 
-  (:derived (ExistNoToolAtJoints ?element)
-       (exists (?ei) (and (Joint ?ei ?element)
-                          (NoToolAtJoint ?ei ?element)
-                     )
-       )
+  ; ! workaround for a bug in the adaptive algorithm
+  (:derived (EitherAssembled ?e1 ?e2)
+      (and 
+        (Joint ?e1 ?e2)
+        (or (Assembled ?e1) (Assembled ?e2))
+      )
   )
 
-  ;; (:derived (AllToolAtJoints ?element)
-  ;;  (forall (?ei) (imply 
-  ;;                       (and (Joint ?ei ?element)
-  ;;                            (IsElement ?ei)
-  ;;                            (IsElement ?element)
-  ;;                       )
-  ;;                       (not (NoToolAtJoint ?ei ?element))
-  ;;                       ;; (exists (?tool)
-  ;;                       ;;     (and (IsClamp ?tool) (Joint ?ei ?element)
-  ;;                       ;;          (ToolAtJoint ?tool ?ei ?element)
-  ;;                       ;;          )
-  ;;                       ;; )
-  ;;                )
-  ;;  )
+  ;; (:derived (ExistNoToolAtJoints ?element)
+  ;;      (exists (?ei) (and (Joint ?ei ?element)
+  ;;                         ;; (NoToolAtJoint ?ei ?element)
+  ;;                         (forall (?tool) 
+  ;;                           (and (IsClamp ?tool)
+  ;;                                (JointToolTypeMatch ?ei ?element ?tool)
+  ;;                                (not (ToolAtJoint ?tool ?ei ?element))
+  ;;                           )
+  ;;                         )
+  ;;                    )
+  ;;      )
   ;; )
+
+  (:derived (AllToolAtJoints ?element)
+   (forall (?ei) (imply 
+                        (and (Joint ?ei ?element)
+                             (IsElement ?ei)
+                             (IsElement ?element)
+                        )
+                        ;; (not (NoToolAtJoint ?ei ?element))
+                        (exists (?tool)
+                            (and (IsClamp ?tool) ; (Joint ?ei ?element)
+                                 (JointToolTypeMatch ?ei ?element ?tool)
+                                 (ToolAtJoint ?tool ?ei ?element)
+                            )
+                        )
+                 )
+   )
+  )
 
   (:derived (EitherGroundedAllToolAtJoints ?element)
     (and
         (IsElement ?element)
-        ;; (or (Grounded ?element) (AllToolAtJoints ?element))
-        (or (Grounded ?element) (not (ExistNoToolAtJoints ?element)))
+        (or (Grounded ?element) (AllToolAtJoints ?element))
+        ;; (or (Grounded ?element) (not (ExistNoToolAtJoints ?element)))
     )
   )
 
