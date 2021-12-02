@@ -2,6 +2,7 @@ import os, sys
 import json
 import argparse
 from termcolor import cprint
+from collections import defaultdict
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(os.path.join(HERE, ".."))
@@ -86,6 +87,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
         ])
 
     # * tool type
+    clamp_from_joint = defaultdict(set)
     for j_data in process['assembly']['joints']:
         j = j_data['joint_id']
         joint_clamp_type = j_data['tool_type']
@@ -95,6 +97,8 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
                     ('JointToolTypeMatch', j[0], j[1], c_name),
                     ('JointToolTypeMatch', j[1], j[0], c_name),
                 ])
+                clamp_from_joint[j[1]+','+j[0]].add(c_name)
+                clamp_from_joint[j[0]+','+j[1]].add(c_name)
 
     for g_name in process['grippers']:
         init.extend([
@@ -104,11 +108,15 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
             ('AtRack', g_name),
         ])
     # * gripper type
+    gripper_from_beam = defaultdict(set)
     for beam_data in process['assembly']['sequence']:
         beam_gripper_type = beam_data["beam_gripper_type"]
         for g_name, g_data in process['grippers'].items():
             if g_data['type_name'] == beam_gripper_type:
-                init.append(('GripperToolTypeMatch', beam_data['beam_id'], g_name))
+                beam_id = beam_data['beam_id']
+                init.append(('GripperToolTypeMatch', beam_id, g_name))
+                gripper_from_beam[beam_id].add(g_name)
+                gripper_from_beam[beam_id].add(g_name)
 
     if debug:
         stream_map = DEBUG
@@ -124,7 +132,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     goal = And(*goal_literals)
 
     pddlstream_problem = PDDLProblem(domain_pddl, constant_map, stream_pddl, stream_map, init, goal)
-    return pddlstream_problem
+    return pddlstream_problem, gripper_from_beam, clamp_from_joint
 
 ###############################
 
@@ -138,7 +146,7 @@ def main():
 
     debug_problem_name = "nine_pieces_process_symbolic.json"
     debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, 
-        debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents)
+        debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents)[0]
 
     print()
     print('Goal:', debug_pddl_problem.goal)

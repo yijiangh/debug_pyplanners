@@ -3,7 +3,7 @@
   (:stream sample-place-element
     :inputs (?element)
     :domain (IsElement ?element)
-    :outputs (?conf1 ?conf2 ?traj)
+    :outputs (?traj)
     :certified (and
                     (PlaceElementAction ?element ?traj)
                     (Traj ?traj)
