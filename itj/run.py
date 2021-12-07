@@ -166,9 +166,9 @@ def main():
     print_plan(plan)
     cprint('Planning {}'.format('succeeds' if plan_success else 'fails'), 'green' if plan_success else 'red')
 
-    plan_success &= len(plan) == 53 if plan_success and not args.fluents else len(plan) == 60
-    if not plan_success:
-        cprint('Plan length not correct.', 'red')
+    # plan_success &= len(plan) == 53 if plan_success and not args.fluents else len(plan) == 60
+    # if not plan_success:
+    #     cprint('Plan length not correct.', 'red')
 
 if __name__ == '__main__':
     main()

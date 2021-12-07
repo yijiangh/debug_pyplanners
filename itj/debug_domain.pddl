@@ -44,7 +44,7 @@
     (Assembled ?element)
 
     ;; * derived
-    ;; (Connected ?element)
+    (Connected ?element)
     (EitherGroundedAllToolAtJoints ?element)
     (EitherAssembled ?e1 ?e2)
 
@@ -86,7 +86,7 @@
                     (Attached ?element)
                     (IsElement ?element)
                     ; ! assembly state precondition
-                    ;; (Connected ?element)
+                    (Connected ?element)
                     ; ! tool state precondition
                     ;; (or (Grounded ?element) (AllToolAtJoints ?element))
                     (EitherGroundedAllToolAtJoints ?element)
@@ -199,15 +199,15 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; (:derived (Connected ?element)
-  ;;  (or (Grounded ?element)
-  ;;      (exists (?ei) (and (Joint ?ei ?element)
-  ;;                         (Assembled ?ei)
-  ;;                         (Connected ?ei)
-  ;;                    )
-  ;;      )
-  ;;  )
-  ;; )
+  (:derived (Connected ?element)
+   (or (Grounded ?element)
+       (exists (?ei) (and (Joint ?ei ?element)
+                          (Assembled ?ei)
+                          (Connected ?ei)
+                     )
+       )
+   )
+  )
 
   ; ! workaround for a bug in the adaptive algorithm
   (:derived (EitherAssembled ?e1 ?e2)
@@ -217,43 +217,43 @@
       )
   )
 
-  ;; (:derived (ExistNoToolAtJoints ?element)
-  ;;      (exists (?ei) (and (Joint ?ei ?element)
-  ;;                         ;; (NoToolAtJoint ?ei ?element)
-  ;;                         (forall (?tool) 
-  ;;                           (and (IsClamp ?tool)
-  ;;                                (JointToolTypeMatch ?ei ?element ?tool)
-  ;;                                (not (ToolAtJoint ?tool ?ei ?element))
-  ;;                           )
-  ;;                         )
-  ;;                    )
-  ;;      )
-  ;; )
-
-  (:derived (AllToolAtJoints ?element)
-   (and 
-    (IsElement ?element)
-    (forall (?ei) (imply 
-                         (and (Joint ?ei ?element)
-                              (IsElement ?ei)
-                         )
-                         ;; (not (NoToolAtJoint ?ei ?element))
-                         (exists (?tool)
-                             (and (IsClamp ?tool) ; (Joint ?ei ?element)
-                                  (JointToolTypeMatch ?ei ?element ?tool)
-                                  (ToolAtJoint ?tool ?ei ?element)
-                             )
-                         )
-                  )
-    )
-   )
+  (:derived (ExistNoToolAtJoints ?element)
+       (exists (?ei) (and (Joint ?ei ?element)
+                          (NoToolAtJoint ?ei ?element)
+                          ;; (forall (?tool) 
+                          ;;   (and (IsClamp ?tool)
+                          ;;        (JointToolTypeMatch ?ei ?element ?tool)
+                          ;;        (not (ToolAtJoint ?tool ?ei ?element))
+                          ;;   )
+                          ;; )
+                     )
+       )
   )
+
+  ;; (:derived (AllToolAtJoints ?element)
+  ;;  (and 
+  ;;   (IsElement ?element)
+  ;;   (forall (?ei) (imply 
+  ;;                        (and (Joint ?ei ?element)
+  ;;                             (IsElement ?ei)
+  ;;                        )
+  ;;                        (not (NoToolAtJoint ?ei ?element))
+  ;;                       ;;  (exists (?tool)
+  ;;                       ;;      (and (IsClamp ?tool) ; (Joint ?ei ?element)
+  ;;                       ;;           (JointToolTypeMatch ?ei ?element ?tool)
+  ;;                       ;;           (ToolAtJoint ?tool ?ei ?element)
+  ;;                       ;;      )
+  ;;                       ;;  )
+  ;;                 )
+  ;;   )
+  ;;  )
+  ;; )
 
   (:derived (EitherGroundedAllToolAtJoints ?element)
     (and
         (IsElement ?element)
-        (or (Grounded ?element) (AllToolAtJoints ?element))
-        ;; (or (Grounded ?element) (not (ExistNoToolAtJoints ?element)))
+        ;; (or (Grounded ?element) (AllToolAtJoints ?element))
+        (or (Grounded ?element) (not (ExistNoToolAtJoints ?element)))
     )
   )
 
