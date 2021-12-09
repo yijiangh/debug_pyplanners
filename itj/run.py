@@ -152,12 +152,26 @@ def main():
     print('Goal:', debug_pddl_problem.goal)
     print()
 
+    additional_config = {}
+    if args.fluents:
+        additional_config['planner'] = {
+            'search': 'eager', # eager | lazy | hill_climbing | a_star | random_walk | mcts
+            # lazy might be faster because it performs fewer heuristic evaluations but the solution quality might be lower
+            # NOTE(caelan): eager is actually faster here because evaluating heuristic goal is cheap
+            'evaluator': 'greedy', # 'bfs' | 'uniform' | 'astar' | 'wastar2' | 'wastar3' | 'greedy'
+            'heuristic': 'ff', # goal | add | ff | max | blind
+            #'heuristic': ['ff', get_bias_fn(element_from_index)],
+            # * tiebreaker
+            'successors': 'all', # all | random | first_goals | first_operators
+            # 'successors': order_fn,
+        }
+
     set_cost_scale(1)
     solution = solve(debug_pddl_problem, algorithm=args.algorithm,
                      max_time=60,
                      unit_costs=True,
                      max_planner_time=300,
-                     debug=0, verbose=0) #, planner=discrete_planner)
+                     debug=0, verbose=0, **additional_config)
 
     plan, cost, evaluations = solution
     plan_success = is_plan(plan)

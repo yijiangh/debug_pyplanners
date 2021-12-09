@@ -217,19 +217,6 @@
       )
   )
 
-  (:derived (ExistNoToolAtJoints ?element)
-       (exists (?ei) (and (Joint ?ei ?element)
-                          (NoToolAtJoint ?ei ?element)
-                          ;; (forall (?tool) 
-                          ;;   (and (IsClamp ?tool)
-                          ;;        (JointToolTypeMatch ?ei ?element ?tool)
-                          ;;        (not (ToolAtJoint ?tool ?ei ?element))
-                          ;;   )
-                          ;; )
-                     )
-       )
-  )
-
   ;; (:derived (AllToolAtJoints ?element)
   ;;  (and 
   ;;   (IsElement ?element)
@@ -248,6 +235,19 @@
   ;;   )
   ;;  )
   ;; )
+
+  (:derived (ExistNoToolAtJoints ?element)
+       (exists (?ei) (and (Joint ?ei ?element)
+                          (NoToolAtJoint ?ei ?element)
+                          ;; (forall (?tool) 
+                          ;;   (and (IsClamp ?tool)
+                          ;;        (JointToolTypeMatch ?ei ?element ?tool)
+                          ;;        (not (ToolAtJoint ?tool ?ei ?element))
+                          ;;   )
+                          ;; )
+                     )
+       )
+  )
 
   (:derived (EitherGroundedAllToolAtJoints ?element)
     (and
