@@ -14,8 +14,10 @@
 
     (Gripper ?g)
     (Clamp ?c)
+    (ScrewDriver ?sd)
     (IsGripper ?tool)
     (IsClamp ?tool)
+    (IsScrewDriver ?tool)
     (IsTool ?tool)
 
     ; * static predicates but will be produced by stream functions
@@ -64,6 +66,10 @@
                     (RobotGripperEmpty)
                     (IsElement ?element)
                     (AtRack ?element)
+                    ; ! assembly state precondition
+                    (Connected ?element)
+                    ; ! e2 must be assembled before e encoded in the given partial ordering
+                    (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
                     ; ! sampled
                   )
     :effect (and (not (AtRack ?element))
@@ -83,7 +89,7 @@
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (IsGripper ?tool)
                     (Attached ?tool)
-                    (Attached ?element)
+                    ;; (Attached ?element)
                     (IsElement ?element)
                     ; ! assembly state precondition
                     (Connected ?element)
@@ -149,7 +155,8 @@
                     ; ! state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (RobotToolChangerEmpty)
-                    (IsClamp ?tool)
+                    ;; (IsClamp ?tool)
+                    (or (IsClamp ?tool) (IsScrewDriver ?tool))
                     (IsElement ?element1)
                     (IsElement ?element2)
                     (ToolAtJoint ?tool ?element1 ?element2)
@@ -160,7 +167,9 @@
                  ; ! tool status
                  (ToolNotOccupiedOnJoint ?tool)
                  (not (ToolAtJoint ?tool ?element1 ?element2))
+                 (not (ToolAtJoint ?tool ?element2 ?element1))
                  (NoToolAtJoint ?element1 ?element2)
+                 (NoToolAtJoint ?element2 ?element1)
                  ; ! switch for move
                  (CanFreeMove)
             )
@@ -174,7 +183,8 @@
                     ; ! robot state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (Attached ?tool)
-                    (IsClamp ?tool)
+                    ;; (IsClamp ?tool)
+                    (or (IsClamp ?tool) (IsScrewDriver ?tool))
                     (Joint ?element1 ?element2)
                     (IsElement ?element1)
                     (IsElement ?element2)
@@ -190,7 +200,9 @@
                  (RobotToolChangerEmpty)
                  ; ! tool status
                  (ToolAtJoint ?tool ?element1 ?element2)
+                 (ToolAtJoint ?tool ?element2 ?element1)
                  (not (NoToolAtJoint ?element1 ?element2))
+                 (not (NoToolAtJoint ?element2 ?element1))
                  (not (ToolNotOccupiedOnJoint ?tool))
                  ; ! switch for move
                  (CanFreeMove)

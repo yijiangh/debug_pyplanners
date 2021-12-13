@@ -1,0 +1,459 @@
+{
+ "assembly": {
+  "joints": [
+   {
+    "joint_id": [
+     "b1",
+     "b19"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b1",
+     "b3"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b1",
+     "b7"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b0",
+     "b17"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b0",
+     "b2"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b0",
+     "b5"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b2",
+     "b10"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b2",
+     "b16"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b2",
+     "b4"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b2",
+     "b6"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b2",
+     "b9"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b3",
+     "b10"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b3",
+     "b18"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b3",
+     "b4"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b3",
+     "b8"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b3",
+     "b9"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b4",
+     "b11"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b9",
+     "b11"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b5",
+     "b12"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b5",
+     "b13"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b5",
+     "b14"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b5",
+     "b16"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b5",
+     "b6"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b6",
+     "b17"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b7",
+     "b12"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b7",
+     "b13"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b7",
+     "b14"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b7",
+     "b18"
+    ],
+    "tool_type": "CL3"
+   },
+   {
+    "joint_id": [
+     "b7",
+     "b8"
+    ],
+    "tool_type": "CL3M"
+   },
+   {
+    "joint_id": [
+     "b12",
+     "b15"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b13",
+     "b15"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b8",
+     "b19"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b10",
+     "b11"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b14",
+     "b15"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b16",
+     "b17"
+    ],
+    "tool_type": "SL1"
+   },
+   {
+    "joint_id": [
+     "b18",
+     "b19"
+    ],
+    "tool_type": "SL1"
+   }
+  ],
+  "sequence": [
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b1",
+    "grounded": true
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b0",
+    "grounded": true
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b2",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b23",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b25",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b24",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b3",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b20",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b22",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b21",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b4",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b9",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b5",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b26",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b27",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b28",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b6",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b7",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b30",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b29",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": null,
+    "beam_id": "b31",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b12",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b13",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b8",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b10",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1000",
+    "beam_id": "b11",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b14",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1000",
+    "beam_id": "b15",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b16",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b17",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b18",
+    "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1500",
+    "beam_id": "b19",
+    "grounded": false
+   }
+  ]
+ },
+ "clamps": {
+  "c1": {
+   "type_name": "CL3"
+  },
+  "c2": {
+   "type_name": "CL3"
+  },
+  "c3": {
+   "type_name": "CL3M"
+  },
+  "c4": {
+   "type_name": "CL3M"
+  }
+ },
+ "grippers": {
+  "g1": {
+   "type_name": "PG500"
+  },
+  "g2": {
+   "type_name": "PG1000"
+  },
+  "g3": {
+   "type_name": "PG1500"
+  }
+ },
+ "screwdrivers": {
+  "s1": {
+   "type_name": "SL1"
+  },
+  "s2": {
+   "type_name": "SL1"
+  },
+  "s3": {
+   "type_name": "SL1"
+  },
+  "s4": {
+   "type_name": "SL1_G200"
+  }
+ }
+}

@@ -19,6 +19,7 @@ from pddlstream.algorithms.downward import set_cost_scale, parse_action
 from pddlstream.algorithms.meta import solve
 from pddlstream.utils import INF
 from pddlstream.language.constants import print_plan, is_plan
+from pddlstream.utils import flatten, Profiler, SEPARATOR, inf_generator, INF
 
 class EmptyTrajectory(object):
     def __init__(self, tag=''):
@@ -47,6 +48,8 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     init.extend([
         ('RobotToolChangerEmpty',),
     ])
+
+    # process['assembly']['sequence'] = process['assembly']['sequence'][0:3]
 
     beam_seq = []
     for e_data in process['assembly']['sequence']:
@@ -77,6 +80,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
         for e1, e2 in zip(beam_seq_list[:-1], beam_seq_list[1:]):
             init.append(('Order', e1, e2))
 
+    # * Clamps
     for c_name in process['clamps']:
         init.extend([
             ('Clamp', c_name),
@@ -86,8 +90,20 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
             ('ToolNotOccupiedOnJoint', c_name),
         ])
 
-    # * tool type
+    # * Screw Drivers
+    if 'screwdrivers' in process:
+        for sd_name in process['screwdrivers']:
+            init.extend([
+                ('ScrewDriver', sd_name),
+                ('IsScrewDriver', sd_name),
+                ('IsTool', sd_name),
+                ('AtRack', sd_name),
+                ('ToolNotOccupiedOnJoint', sd_name),
+            ])
+
+    # * joint to clamp/scewdriver tool type assignment
     clamp_from_joint = defaultdict(set)
+    screwdriver_from_joint = defaultdict(set)
     for j_data in process['assembly']['joints']:
         j = j_data['joint_id']
         joint_clamp_type = j_data['tool_type']
@@ -99,7 +115,17 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
                 ])
                 clamp_from_joint[j[1]+','+j[0]].add(c_name)
                 clamp_from_joint[j[0]+','+j[1]].add(c_name)
+        if 'screwdrivers' in process:
+            for sd_name, sd in process['screwdrivers'].items():
+                if sd['type_name'] == joint_clamp_type:
+                    init.extend([
+                        ('JointToolTypeMatch', j[0], j[1], sd_name),
+                        ('JointToolTypeMatch', j[1], j[0], sd_name),
+                    ])
+                    screwdriver_from_joint[j[1]+','+j[0]].add(sd_name)
+                    screwdriver_from_joint[j[0]+','+j[1]].add(sd_name)
 
+    # * Grippers
     for g_name in process['grippers']:
         init.extend([
             ('Gripper', g_name),
@@ -132,19 +158,26 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     goal = And(*goal_literals)
 
     pddlstream_problem = PDDLProblem(domain_pddl, constant_map, stream_pddl, stream_map, init, goal)
-    return pddlstream_problem, gripper_from_beam, clamp_from_joint
+    return pddlstream_problem, gripper_from_beam, clamp_from_joint, screwdriver_from_joint
 
 ###############################
+
+FILE_NAME_FROM_PROBLEM = {
+    'nine_pieces' : 'nine_pieces_process_symbolic.json',
+    'cantibox' : 'CantiBoxLeft_process_symbolic.json',
+}
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--algorithm', default='incremental', help='PDDLSteam planning algorithm.')
+    parser.add_argument('--problem', default='nine_pieces', help='Problem to solve.')
     parser.add_argument('--reset_to_home', action='store_true', help='Require all tools to be back on rack as goals.')
     parser.add_argument('--fluents', action='store_false', help='Use fluent facts in stream definitions.')
+    parser.add_argument('--debug', action='store_true', help='Debug mode.')
     args = parser.parse_args()
     print('Arguments:', args)
 
-    debug_problem_name = "nine_pieces_process_symbolic.json"
+    debug_problem_name = FILE_NAME_FROM_PROBLEM[args.problem] # 'CantiBoxLeft_process_symbolic.json' # "nine_pieces_process_symbolic.json"
     debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, 
         debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents)[0]
 
@@ -155,7 +188,7 @@ def main():
     additional_config = {}
     if args.fluents:
         additional_config['planner'] = {
-            'search': 'eager', # eager | lazy | hill_climbing | a_star | random_walk | mcts
+            'search': 'lazy', # eager | lazy | hill_climbing | a_star | random_walk | mcts
             # lazy might be faster because it performs fewer heuristic evaluations but the solution quality might be lower
             # NOTE(caelan): eager is actually faster here because evaluating heuristic goal is cheap
             'evaluator': 'greedy', # 'bfs' | 'uniform' | 'astar' | 'wastar2' | 'wastar3' | 'greedy'
@@ -165,13 +198,17 @@ def main():
             'successors': 'all', # all | random | first_goals | first_operators
             # 'successors': order_fn,
         }
+    else:
+        additional_config['planner'] = 'ff-eager' # | 'add-random-lazy'
 
     set_cost_scale(1)
-    solution = solve(debug_pddl_problem, algorithm=args.algorithm,
-                     max_time=60,
-                     unit_costs=True,
-                     max_planner_time=300,
-                     debug=0, verbose=0, **additional_config)
+    # with Profiler(num=25):
+    if True:
+        solution = solve(debug_pddl_problem, algorithm=args.algorithm,
+                         max_time=60,
+                         unit_costs=True,
+                         max_planner_time=300,
+                         debug=args.debug, verbose=0, **additional_config)
 
     plan, cost, evaluations = solution
     plan_success = is_plan(plan)
