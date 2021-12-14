@@ -181,8 +181,8 @@ def main():
     debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, 
         debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents)[0]
 
-    # print()
-    # print('Initial:', debug_pddl_problem.init)
+    print()
+    print('Initial:', debug_pddl_problem.init)
     print()
     print('Goal:', debug_pddl_problem.goal)
     print()

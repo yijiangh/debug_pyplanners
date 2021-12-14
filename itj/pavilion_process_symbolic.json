@@ -549,22 +549,22 @@
    {
     "beam_gripper_type": "PG1000",
     "beam_id": "b27",
-    "grounded": true
+    "grounded": false
    },
    {
     "beam_gripper_type": "PG1000",
     "beam_id": "b28",
-    "grounded": false
-   },
-   {
-    "beam_gripper_type": "PG1000",
-    "beam_id": "b29",
     "grounded": true
    },
    {
     "beam_gripper_type": "PG1000",
-    "beam_id": "b30",
+    "beam_id": "b29",
     "grounded": false
+   },
+   {
+    "beam_gripper_type": "PG1000",
+    "beam_id": "b30",
+    "grounded": true
    },
    {
     "beam_gripper_type": "PG1000",
