@@ -55,15 +55,13 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     for e_data in process['assembly']['sequence']:
         e = e_data['beam_id']
         beam_seq.append(e)
-        init.extend([
-            ('Element', e),
-            ('AtRack', e),
-            ('IsElement', e)
-        ])
+        init.extend([('AtRack', e),])
+        if e_data['beam_gripper_type'] is None:
+            init.append(('Scaffold', e))
+        else:
+            init.append(('Element', e))
         if e_data['grounded']:
-            init.extend([
-                ('Grounded', e),
-                ])
+            init.extend([('Grounded', e),])
 
     for j_data in process['assembly']['joints']:
         j = j_data['joint_id']
@@ -84,8 +82,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     for c_name in process['clamps']:
         init.extend([
             ('Clamp', c_name),
-            ('IsClamp', c_name),
-            ('IsTool', c_name),
+            ('Tool', c_name),
             ('AtRack', c_name),
             ('ToolNotOccupiedOnJoint', c_name),
         ])
@@ -95,8 +92,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
         for sd_name in process['screwdrivers']:
             init.extend([
                 ('ScrewDriver', sd_name),
-                ('IsScrewDriver', sd_name),
-                ('IsTool', sd_name),
+                ('Tool', sd_name),
                 ('AtRack', sd_name),
                 ('ToolNotOccupiedOnJoint', sd_name),
             ])
@@ -129,8 +125,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     for g_name in process['grippers']:
         init.extend([
             ('Gripper', g_name),
-            ('IsGripper', g_name),
-            ('IsTool', g_name),
+            ('Tool', g_name),
             ('AtRack', g_name),
         ])
     # * gripper type
@@ -156,6 +151,8 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     if reset_to_home:
         goal_literals.extend(('AtRack', t_name) for t_name in list(process['clamps']) + list(process['grippers']))
     goal = And(*goal_literals)
+
+    print(gripper_from_beam)
 
     pddlstream_problem = PDDLProblem(domain_pddl, constant_map, stream_pddl, stream_map, init, goal)
     return pddlstream_problem, gripper_from_beam, clamp_from_joint, screwdriver_from_joint

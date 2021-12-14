@@ -2,7 +2,7 @@
 
   (:stream sample-place-element
     :inputs (?element)
-    :domain (IsElement ?element)
+    :domain (Element ?element)
     :fluents (Assembled)
     :outputs (?traj) 
     :certified (and

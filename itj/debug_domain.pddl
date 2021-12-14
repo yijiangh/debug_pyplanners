@@ -6,8 +6,9 @@
 
     ; * Static predicates (predicates that do not change over time)
     (Element ?element)
+    (Scaffold ?element)
+
     (Joint ?element1 ?element2)
-    (IsElement ?element)
     (Grounded ?element)
     (JointToolTypeMatch ?element1 ?element2 ?tool)
     (GripperToolTypeMatch ?element ?tool)
@@ -15,10 +16,7 @@
     (Gripper ?g)
     (Clamp ?c)
     (ScrewDriver ?sd)
-    (IsGripper ?tool)
-    (IsClamp ?tool)
-    (IsScrewDriver ?tool)
-    (IsTool ?tool)
+    (Tool ?tool)
 
     ; * static predicates but will be produced by stream functions
     (Pose ?pose)
@@ -31,7 +29,6 @@
     (Order ?element1 ?element2)
 
     ; * Fluent predicates (predicates that change over time, which describes the state of the sytem)
-
     (RobotAtConf ?conf)
     (Attached ?object) ; o can be element, gripper or clamp
     (RobotToolChangerEmpty)
@@ -49,6 +46,7 @@
     (Connected ?element)
     (EitherGroundedAllToolAtJoints ?element)
     (EitherAssembled ?e1 ?e2)
+    (NotGripper ?tool)
 
     ; ? equivalent
     (AllToolAtJoints ?element)
@@ -60,11 +58,11 @@
     :precondition (and
                     ; ! state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
-                    (IsGripper ?tool)
+                    (Gripper ?tool)
                     (GripperToolTypeMatch ?element ?tool)
                     (Attached ?tool)
                     (RobotGripperEmpty)
-                    (IsElement ?element)
+                    (Element ?element)
                     (AtRack ?element)
                     ; ! assembly state precondition
                     (Connected ?element)
@@ -87,15 +85,15 @@
     :precondition (and
                     ; ! robot state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
-                    (IsGripper ?tool)
+                    (Gripper ?tool)
                     (Attached ?tool)
-                    ;; (Attached ?element)
-                    (IsElement ?element)
+                    (Attached ?element)
+                    (Element ?element)
                     ; ! assembly state precondition
                     (Connected ?element)
                     ; ! tool state precondition
                     ;; (or (Grounded ?element) (AllToolAtJoints ?element))
-                    (EitherGroundedAllToolAtJoints ?element)
+                    ;; (EitherGroundedAllToolAtJoints ?element)
                     ; ! e2 must be assembled before e encoded in the given partial ordering
                     (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
                     ; ! sampled
@@ -115,7 +113,7 @@
                     ; ! state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (RobotToolChangerEmpty)
-                    (IsTool ?tool)
+                    (Tool ?tool)
                     (AtRack ?tool)
                     ; ! sampled
                   )
@@ -123,10 +121,21 @@
                  (not (RobotToolChangerEmpty))
                  ; ! tool status
                  (not (AtRack ?tool))
-                 (when (IsGripper ?tool) (RobotGripperEmpty))
+                 (when (Gripper ?tool) (RobotGripperEmpty))
                  ; ! switch for move
                  (CanFreeMove)
             )
+  )
+
+  (:action manual_assemble_element
+    :parameters (?element)
+    :precondition (and
+                    (Scaffold ?element)
+                    ; ! e2 must be assembled before e encoded in the given partial ordering
+                    (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
+                    )
+    :effect (and (Assembled ?element)
+                 )
   )
 
   (:action place_tool_at_rack
@@ -135,8 +144,8 @@
                     ; ! robot state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (Attached ?tool)
-                    (IsTool ?tool)
-                    (imply (IsGripper ?tool) (RobotGripperEmpty))
+                    (Tool ?tool)
+                    (imply (Gripper ?tool) (RobotGripperEmpty))
                     ; ! sampled
                     )
     :effect (and (not (Attached ?tool))
@@ -155,10 +164,11 @@
                     ; ! state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (RobotToolChangerEmpty)
-                    ;; (IsClamp ?tool)
-                    (or (IsClamp ?tool) (IsScrewDriver ?tool))
-                    (IsElement ?element1)
-                    (IsElement ?element2)
+                    ;; (Clamp ?tool)
+                    ;; (or (Clamp ?tool) (ScrewDriver ?tool))
+                    (NotGripper ?tool)
+                    (Element ?element1)
+                    (Element ?element2)
                     (ToolAtJoint ?tool ?element1 ?element2)
                     ; ! sampled
                   )
@@ -183,11 +193,12 @@
                     ; ! robot state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (Attached ?tool)
-                    ;; (IsClamp ?tool)
-                    (or (IsClamp ?tool) (IsScrewDriver ?tool))
+                    ;; (Clamp ?tool)
+                    ;; (or (Clamp ?tool) (ScrewDriver ?tool))
+                    (NotGripper ?tool)
                     (Joint ?element1 ?element2)
-                    (IsElement ?element1)
-                    (IsElement ?element2)
+                    (Element ?element1)
+                    (Element ?element2)
                     (ToolNotOccupiedOnJoint ?tool)
                     (JointToolTypeMatch ?element1 ?element2 ?tool)
                     ;; (or (Assembled ?element1) (Assembled ?element2))
@@ -213,7 +224,9 @@
 
   (:derived (Connected ?element)
    (or (Grounded ?element)
-       (exists (?ei) (and (Joint ?ei ?element)
+       (exists (?ei) (and 
+                          ;; (Element ?ei)
+                          (Joint ?ei ?element)
                           (Assembled ?ei)
                           (Connected ?ei)
                      )
@@ -229,6 +242,10 @@
       )
   )
 
+  (:derived (NotGripper ?tool)
+    (or (Clamp ?tool) (ScrewDriver ?tool))
+  )
+
   ;; (:derived (AllToolAtJoints ?element)
   ;;  (and 
   ;;   (IsElement ?element)
@@ -238,7 +255,7 @@
   ;;                        )
   ;;                        (not (NoToolAtJoint ?ei ?element))
   ;;                       ;;  (exists (?tool)
-  ;;                       ;;      (and (IsClamp ?tool) ; (Joint ?ei ?element)
+  ;;                       ;;      (and (Clamp ?tool) ; (Joint ?ei ?element)
   ;;                       ;;           (JointToolTypeMatch ?ei ?element ?tool)
   ;;                       ;;           (ToolAtJoint ?tool ?ei ?element)
   ;;                       ;;      )
@@ -252,7 +269,7 @@
        (exists (?ei) (and (Joint ?ei ?element)
                           (NoToolAtJoint ?ei ?element)
                           ;; (forall (?tool) 
-                          ;;   (and (IsClamp ?tool)
+                          ;;   (and (Clamp ?tool)
                           ;;        (JointToolTypeMatch ?ei ?element ?tool)
                           ;;        (not (ToolAtJoint ?tool ?ei ?element))
                           ;;   )
@@ -263,7 +280,7 @@
 
   (:derived (EitherGroundedAllToolAtJoints ?element)
     (and
-        (IsElement ?element)
+        (Element ?element)
         ;; (or (Grounded ?element) (AllToolAtJoints ?element))
         (or (Grounded ?element) (not (ExistNoToolAtJoints ?element)))
     )
