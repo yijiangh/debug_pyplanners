@@ -34,7 +34,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     json_file_path = os.path.join(HERE, json_file_name)
     with open(json_file_path, 'r') as f:
         process = json.load(f)
-    cprint('Symbolic process json parsed from {}'.format(json_file_path), 'green')
+    cprint('Symbolic process json parsed from {}'.format(json_file_path), 'magenta')
 
     domain_pddl = read(os.path.join(HERE, 'debug_domain.pddl'))
     if not use_fluents:
@@ -51,6 +51,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
 
     # process['assembly']['sequence'] = process['assembly']['sequence'][0:3]
 
+    # * Beams
     beam_seq = []
     for e_data in process['assembly']['sequence']:
         e = e_data['beam_id']
@@ -91,6 +92,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     if 'screwdrivers' in process:
         for sd_name in process['screwdrivers']:
             init.extend([
+                # ('Clamp', sd_name),
                 ('ScrewDriver', sd_name),
                 ('Tool', sd_name),
                 ('AtRack', sd_name),
@@ -150,9 +152,9 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     goal_literals.extend(('Assembled', e) for e in beam_seq)
     if reset_to_home:
         goal_literals.extend(('AtRack', t_name) for t_name in list(process['clamps']) + list(process['grippers']))
+        if 'screwdrivers' in process:
+            goal_literals.extend(('AtRack', t_name) for t_name in list(process['screwdrivers']))
     goal = And(*goal_literals)
-
-    print(gripper_from_beam)
 
     pddlstream_problem = PDDLProblem(domain_pddl, constant_map, stream_pddl, stream_map, init, goal)
     return pddlstream_problem, gripper_from_beam, clamp_from_joint, screwdriver_from_joint
@@ -161,6 +163,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
 
 FILE_NAME_FROM_PROBLEM = {
     'nine_pieces' : 'nine_pieces_process_symbolic.json',
+    'pavilion' : 'pavilion_process_symbolic.json',
     'cantibox' : 'CantiBoxLeft_process_symbolic.json',
 }
 
@@ -178,6 +181,8 @@ def main():
     debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, 
         debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents)[0]
 
+    # print()
+    # print('Initial:', debug_pddl_problem.init)
     print()
     print('Goal:', debug_pddl_problem.goal)
     print()

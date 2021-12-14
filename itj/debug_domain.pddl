@@ -92,7 +92,7 @@
                     ; ! assembly state precondition
                     (Connected ?element)
                     ; ! tool state precondition
-                    ;; (or (Grounded ?element) (AllToolAtJoints ?element))
+                    ;; ? (or (Grounded ?element) (AllToolAtJoints ?element))
                     ;; (EitherGroundedAllToolAtJoints ?element)
                     ; ! e2 must be assembled before e encoded in the given partial ordering
                     (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
@@ -104,6 +104,17 @@
                  (RobotGripperEmpty)
                  ; ! switch for move
                  (CanFreeMove)
+                 )
+  )
+
+  (:action manual_assemble_element
+    :parameters (?element)
+    :precondition (and
+                    (Scaffold ?element)
+                    ; ! e2 must be assembled before e encoded in the given partial ordering
+                    (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
+                    )
+    :effect (and (Assembled ?element)
                  )
   )
 
@@ -125,17 +136,6 @@
                  ; ! switch for move
                  (CanFreeMove)
             )
-  )
-
-  (:action manual_assemble_element
-    :parameters (?element)
-    :precondition (and
-                    (Scaffold ?element)
-                    ; ! e2 must be assembled before e encoded in the given partial ordering
-                    (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
-                    )
-    :effect (and (Assembled ?element)
-                 )
   )
 
   (:action place_tool_at_rack
@@ -164,9 +164,9 @@
                     ; ! state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (RobotToolChangerEmpty)
-                    ;; (Clamp ?tool)
+                    (Clamp ?tool)
                     ;; (or (Clamp ?tool) (ScrewDriver ?tool))
-                    (NotGripper ?tool)
+                    ;; (NotGripper ?tool)
                     (Element ?element1)
                     (Element ?element2)
                     (ToolAtJoint ?tool ?element1 ?element2)
@@ -193,15 +193,15 @@
                     ; ! robot state precondition
                     ;; (imply (ConsiderTransition) (and (not (CanFreeMove)) (RobotAtConf ?conf1)))
                     (Attached ?tool)
-                    ;; (Clamp ?tool)
-                    ;; (or (Clamp ?tool) (ScrewDriver ?tool))
-                    (NotGripper ?tool)
+                    (Clamp ?tool)
+                    ;; ? (or (Clamp ?tool) (ScrewDriver ?tool))
+                    ;; (NotGripper ?tool)
                     (Joint ?element1 ?element2)
                     (Element ?element1)
                     (Element ?element2)
                     (ToolNotOccupiedOnJoint ?tool)
                     (JointToolTypeMatch ?element1 ?element2 ?tool)
-                    ;; (or (Assembled ?element1) (Assembled ?element2))
+                    ;; ? (or (Assembled ?element1) (Assembled ?element2))
                     (EitherAssembled ?element1 ?element2)
                     (NoToolAtJoint ?element1 ?element2)
                     ; ! assembly state precondition
@@ -236,14 +236,17 @@
 
   ; ! workaround for a bug in the adaptive algorithm
   (:derived (EitherAssembled ?e1 ?e2)
-      (and 
-        (Joint ?e1 ?e2)
+      ;; (and 
+        ;; (Joint ?e1 ?e2)
         (or (Assembled ?e1) (Assembled ?e2))
-      )
+      ;; )
   )
 
   (:derived (NotGripper ?tool)
-    (or (Clamp ?tool) (ScrewDriver ?tool))
+    (and
+      (Tool ?tool)
+      (or (Clamp ?tool) (ScrewDriver ?tool))
+    )
   )
 
   ;; (:derived (AllToolAtJoints ?element)
