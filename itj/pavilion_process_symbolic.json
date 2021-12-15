@@ -417,204 +417,204 @@
   ],
   "sequence": [
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b0",
-    "grounded": true
+    "beam_id": "b0"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b1",
-    "grounded": true
+    "beam_id": "b1"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b2",
-    "grounded": false
+    "beam_id": "b2"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b3",
-    "grounded": false
+    "beam_id": "b3"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b4",
-    "grounded": false
+    "beam_id": "b4"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b5",
-    "grounded": true
+    "beam_id": "b5"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG500",
-    "beam_id": "b6",
-    "grounded": false
+    "beam_id": "b6"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b7",
-    "grounded": true
+    "beam_id": "b7"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG500",
-    "beam_id": "b8",
-    "grounded": false
+    "beam_id": "b8"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b9",
-    "grounded": false
+    "beam_id": "b9"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b10",
-    "grounded": false
+    "beam_id": "b10"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b11",
-    "grounded": false
+    "beam_id": "b11"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b12",
-    "grounded": true
+    "beam_id": "b12"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG500",
-    "beam_id": "b13",
-    "grounded": false
+    "beam_id": "b13"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b14",
-    "grounded": true
+    "beam_id": "b14"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b15",
-    "grounded": false
+    "beam_id": "b15"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b16",
-    "grounded": false
+    "beam_id": "b16"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b17",
-    "grounded": false
+    "beam_id": "b17"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b18",
-    "grounded": false
+    "beam_id": "b18"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b19",
-    "grounded": true
+    "beam_id": "b19"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b20",
-    "grounded": false
+    "beam_id": "b20"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b21",
-    "grounded": true
+    "beam_id": "b21"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b22",
-    "grounded": false
+    "beam_id": "b22"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG500",
-    "beam_id": "b23",
-    "grounded": false
+    "beam_id": "b23"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b24",
-    "grounded": true
+    "beam_id": "b24"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b26",
-    "grounded": false
+    "beam_id": "b26"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b27",
-    "grounded": false
+    "beam_id": "b27"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b28",
-    "grounded": true
+    "beam_id": "b28"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b29",
-    "grounded": false
+    "beam_id": "b29"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b30",
-    "grounded": true
+    "beam_id": "b30"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b31",
-    "grounded": false
+    "beam_id": "b31"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b25",
-    "grounded": false
+    "beam_id": "b25"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b32",
-    "grounded": false
+    "beam_id": "b32"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b33",
-    "grounded": false
+    "beam_id": "b33"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b34",
-    "grounded": false
+    "beam_id": "b34"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b35",
-    "grounded": false
+    "beam_id": "b35"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b36",
-    "grounded": false
+    "beam_id": "b36"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b37",
-    "grounded": true
+    "beam_id": "b37"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b38",
-    "grounded": false
+    "beam_id": "b38"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b39",
-    "grounded": false
+    "beam_id": "b39"
    }
   ]
  },

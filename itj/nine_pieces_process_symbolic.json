@@ -45,48 +45,6 @@
    },
    {
     "joint_id": [
-     "b2",
-     "b0"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b2",
-     "b1"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b3",
-     "b0"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b3",
-     "b1"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b4",
-     "b5"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b4",
-     "b7"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
      "b5",
      "b4"
     ],
@@ -101,20 +59,6 @@
    },
    {
     "joint_id": [
-     "b6",
-     "b0"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b6",
-     "b5"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
      "b7",
      "b4"
     ],
@@ -126,67 +70,53 @@
      "b8"
     ],
     "tool_type": "CL3"
-   },
-   {
-    "joint_id": [
-     "b8",
-     "b1"
-    ],
-    "tool_type": null
-   },
-   {
-    "joint_id": [
-     "b8",
-     "b7"
-    ],
-    "tool_type": null
    }
   ],
   "sequence": [
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b0",
-    "grounded": true
+    "beam_id": "b0"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b1",
-    "grounded": true
+    "beam_id": "b1"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b2",
-    "grounded": false
+    "beam_id": "b2"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b3",
-    "grounded": false
+    "beam_id": "b3"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b5",
-    "grounded": true
+    "beam_id": "b5"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG500",
-    "beam_id": "b6",
-    "grounded": false
+    "beam_id": "b6"
    },
    {
+    "assembly_method": "GroundContact",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b7",
-    "grounded": true
+    "beam_id": "b7"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG500",
-    "beam_id": "b8",
-    "grounded": false
+    "beam_id": "b8"
    },
    {
+    "assembly_method": "Clamped",
     "beam_gripper_type": "PG1000",
-    "beam_id": "b4",
-    "grounded": false
+    "beam_id": "b4"
    }
   ]
  },
@@ -214,5 +144,6 @@
   "g3": {
    "type_name": "PG1500"
   }
- }
+ },
+ "screwdrivers": {}
 }
