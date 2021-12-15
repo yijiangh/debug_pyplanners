@@ -6,10 +6,11 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(os.path.join(HERE, ".."))
 
 from load_path import *
-from itj.parse import get_itj_pddl_problem_from_json
+from itj.parse import get_itj_pddl_problem_from_json, export_plan_to_file
 
 ################################
 
+from pddlstream.utils import str_from_object, read
 from pddlstream.algorithms.downward import set_cost_scale, parse_action
 from pddlstream.algorithms.meta import solve
 from pddlstream.utils import INF
@@ -31,16 +32,25 @@ def main():
     parser.add_argument('--seq_n', nargs='+', type=int, help='Zero-based index according to the Beam sequence in process.assembly.sequence. If only provide one number, `--seq_n 1`, we will only plan for one beam. If provide two numbers, `--seq_n start_id end_id`, we will plan from #start_id UNTIL #end_id. If more numbers are provided. By default, all the beams will be checked.')
 
     parser.add_argument('--reset_to_home', action='store_true', help='Require all tools to be back on rack as goals.')
-    parser.add_argument('--fluents', action='store_false', help='Use fluent facts in stream definitions.')
+    parser.add_argument('--nofluents', action='store_true', help='Not use fluent facts in stream definitions.')
+    parser.add_argument('--write', action='store_true', help='Export plan.')
     parser.add_argument('--debug', action='store_true', help='Debug mode.')
     args = parser.parse_args()
-    print('Arguments:', args)
-    
-    cprint('Using {} backend.'.format('pyplanner' if args.fluents else 'downward'), 'cyan')
 
-    debug_problem_name = FILE_NAME_FROM_PROBLEM[args.problem] # 'CantiBoxLeft_process_symbolic.json' # "nine_pieces_process_symbolic.json"
-    debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name, use_partial_order=True, 
-        debug=True, reset_to_home=args.reset_to_home, use_fluents=args.fluents, seq_n=args.seq_n)[0]
+    # if args.write:
+    #     import logging
+    #     logging.basicConfig(filename=os.path.join(HERE, 'results', args.problem + \
+    #         '_{}'.format('downward' if args.nofluents else 'pyplanner') + '.log'), level=logging.DEBUG)
+    #     logger = logging.getLogger()
+    #     sys.stderr.write = logger.error
+    #     sys.stdout.write = logger.info
+
+    print('Arguments:', args)
+    cprint('Using {} backend.'.format('pyplanner' if not args.nofluents else 'downward'), 'cyan')
+
+    debug_problem_name = FILE_NAME_FROM_PROBLEM[args.problem] 
+    debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name,
+        debug=True, reset_to_home=args.reset_to_home, use_fluents=not args.nofluents, seq_n=args.seq_n)[0]
 
     # print()
     # print('Initial:', debug_pddl_problem.init)
@@ -49,7 +59,7 @@ def main():
     print()
 
     additional_config = {}
-    if args.fluents:
+    if not args.nofluents:
         additional_config['planner'] = {
             'search': 'eager', # eager | lazy | hill_climbing | a_star | random_walk | mcts
             # lazy might be faster because it performs fewer heuristic evaluations but the solution quality might be lower
@@ -65,8 +75,8 @@ def main():
         additional_config['planner'] = 'ff-eager' # | 'add-random-lazy'
 
     set_cost_scale(1)
-    # with Profiler(num=25):
-    if True:
+    with Profiler(num=25):
+    # if True:
         solution = solve(debug_pddl_problem, algorithm=args.algorithm,
                          max_time=INF,
                          unit_costs=True,
@@ -79,6 +89,11 @@ def main():
     print('-'*10)
     print_plan(plan)
     cprint('Planning {}'.format('succeeds' if plan_success else 'fails'), 'green' if plan_success else 'red')
+
+    if plan_success and args.write:
+        plan_path = os.path.join(HERE, 'results', args.problem + '_plan' + \
+            '_{}'.format('downward' if args.nofluents else 'pyplanner') + '.txt')
+        export_plan_to_file(plan, plan_path)
 
     # plan_success &= len(plan) == 53 if plan_success and not args.fluents else len(plan) == 60
     # if not plan_success:

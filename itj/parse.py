@@ -3,7 +3,7 @@ import json
 from termcolor import cprint
 from collections import defaultdict
 
-from pddlstream.utils import read
+from pddlstream.utils import read, str_from_object, write
 from pddlstream.language.stream import StreamInfo, PartialInputs, WildOutput, DEBUG
 from pddlstream.language.constants import And, PDDLProblem, Equal
 from pddlstream.language.generator import from_gen_fn, from_fn, from_test
@@ -29,8 +29,8 @@ def beam_ids_from_argparse_seq_n(beam_sequence, seq_n):
     cprint('Solving for beam {}'.format(beam_ids), 'cyan')
     return beam_ids
 
-def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug=False,
-        reset_to_home=True, use_fluents=False, seq_n=None):
+def get_itj_pddl_problem_from_json(json_file_name, debug=False,
+        reset_to_home=False, use_fluents=False, seq_n=None):
     json_file_path = os.path.join(HERE, json_file_name)
     with open(json_file_path, 'r') as f:
         process = json.load(f)
@@ -68,16 +68,15 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
         j = j_data['joint_id']
         init.extend([
             ('Joint', j[0], j[1]),
-            ('Joint', j[1], j[0]),
+            # ('Joint', j[1], j[0]),
             # ('NoToolAtJoint', j[0], j[1]),
             # ('NoToolAtJoint', j[1], j[0]),
         ])
 
-    if use_partial_order:
-        beam_seq_list = beam_seq
-        cprint('Using beam sequence ordering: {}'.format(beam_seq), 'yellow')
-        for e1, e2 in zip(beam_seq_list[:-1], beam_seq_list[1:]):
-            init.append(('Order', e1, e2))
+    # * assembly sequence
+    cprint('Using beam sequence ordering: {}'.format(beam_seq), 'yellow')
+    for e1, e2 in zip(beam_seq[:-1], beam_seq[1:]):
+        init.append(('Order', e1, e2))
 
     # * Clamps
     for c_name in process['clamps']:
@@ -92,8 +91,7 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     if 'screwdrivers' in process:
         for sd_name in process['screwdrivers']:
             init.extend([
-                ('Clamp', sd_name),
-                # ('ScrewDriver', sd_name),
+                ('ScrewDriver', sd_name),
                 ('Tool', sd_name),
                 ('AtRack', sd_name),
                 ('ToolNotOccupiedOnJoint', sd_name),
@@ -109,19 +107,19 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
             if c['type_name'] == joint_clamp_type:
                 init.extend([
                     ('JointToolTypeMatch', j[0], j[1], c_name),
-                    ('JointToolTypeMatch', j[1], j[0], c_name),
+                    # ('JointToolTypeMatch', j[1], j[0], c_name),
                 ])
-                clamp_from_joint[j[1]+','+j[0]].add(c_name)
                 clamp_from_joint[j[0]+','+j[1]].add(c_name)
+                # clamp_from_joint[j[1]+','+j[0]].add(c_name)
         if 'screwdrivers' in process:
             for sd_name, sd in process['screwdrivers'].items():
                 if sd['type_name'] == joint_clamp_type:
                     init.extend([
                         ('JointToolTypeMatch', j[0], j[1], sd_name),
-                        ('JointToolTypeMatch', j[1], j[0], sd_name),
+                        # ('JointToolTypeMatch', j[1], j[0], sd_name),
                     ])
-                    screwdriver_from_joint[j[1]+','+j[0]].add(sd_name)
                     screwdriver_from_joint[j[0]+','+j[1]].add(sd_name)
+                    # screwdriver_from_joint[j[1]+','+j[0]].add(sd_name)
 
     # * Grippers
     for g_name in process['grippers']:
@@ -161,3 +159,15 @@ def get_itj_pddl_problem_from_json(json_file_name, use_partial_order=True, debug
     pddlstream_problem = PDDLProblem(domain_pddl, constant_map, stream_pddl, stream_map, init, goal)
     return pddlstream_problem, gripper_from_beam, clamp_from_joint, screwdriver_from_joint
 
+######################################################
+
+def export_plan_to_file(plan, file_path=None):
+    if file_path is None:
+        file_path = 'tmp_pddlstream_plan.txt'
+    long_str = ''
+    for i, action in enumerate(plan):
+        name, args = action
+        long_str += '{:2}) {} {}\n'.format(i, name, ' '.join(map(str_from_object, args)))
+        # f.write(line)
+    write(file_path, long_str)
+    cprint('Plan written to {}'.format(file_path), 'green')

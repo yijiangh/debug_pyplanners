@@ -33,7 +33,6 @@
     (ToolNotOccupiedOnJoint ?tool)
     (ToolAtJoint ?tool ?element1 ?element2)
     (JointOccupiedByTool ?element1 ?element2)
-    (JointMade ?e1 ?e2)
 
     (AtRack ?object) ; object can be either element or tool
     (Assembled ?element)
@@ -44,6 +43,8 @@
     (EitherGroundContactElementExistToolAtJoints ?element)
     ;; (EitherAssembled ?e1 ?e2)
     ;; (NotGripper ?tool)
+
+    (JointMade ?e1 ?e2)
 
     ; ? equivalent
     ;; (AllToolAtJoints ?element)
@@ -168,9 +169,9 @@
                  (RobotToolChangerEmpty)
                  ; ! tool status
                  (ToolAtJoint ?tool ?element1 ?element2)
-                 (ToolAtJoint ?tool ?element2 ?element1)
+                ;;  (ToolAtJoint ?tool ?element2 ?element1)
                  (JointOccupiedByTool ?element1 ?element2)
-                 (JointOccupiedByTool ?element2 ?element1)
+                ;;  (JointOccupiedByTool ?element2 ?element1)
                  (not (ToolNotOccupiedOnJoint ?tool))
                  )
   )
@@ -192,9 +193,9 @@
                  ; ! tool status
                  (ToolNotOccupiedOnJoint ?tool)
                  (not (ToolAtJoint ?tool ?element1 ?element2))
-                 (not (ToolAtJoint ?tool ?element2 ?element1))
+                ;;  (not (ToolAtJoint ?tool ?element2 ?element1))
                  (not (JointOccupiedByTool ?element1 ?element2))
-                 (not (JointOccupiedByTool ?element2 ?element1))
+                ;;  (not (JointOccupiedByTool ?element2 ?element1))
             )
   )
 
@@ -224,38 +225,6 @@
   ;;       ;; (Joint ?e1 ?e2)
   ;;       (or (Assembled ?e1) (Assembled ?e2))
   ;;     ;; )
-  ;; )
-
-  ;; (:derived (AllToolAtJoints ?element)
-  ;;  (and 
-  ;;   (IsElement ?element)
-  ;;   (forall (?ei) (imply 
-  ;;                        (and (Joint ?ei ?element)
-  ;;                             (IsElement ?ei)
-  ;;                        )
-  ;;                        (not (NoToolAtJoint ?ei ?element))
-  ;;                       ;;  (exists (?tool)
-  ;;                       ;;      (and (Clamp ?tool) ; (Joint ?ei ?element)
-  ;;                       ;;           (JointToolTypeMatch ?ei ?element ?tool)
-  ;;                       ;;           (ToolAtJoint ?tool ?ei ?element)
-  ;;                       ;;      )
-  ;;                       ;;  )
-  ;;                 )
-  ;;   )
-  ;;  )
-  ;; )
-
-  ;; (:derived (ExistNoToolAtJoints ?element)
-  ;;      (exists (?ei) (and (Joint ?ei ?element)
-  ;;                         (NoToolAtJoint ?ei ?element)
-  ;;                         ;; (forall (?tool) 
-  ;;                         ;;   (and (Clamp ?tool)
-  ;;                         ;;        (JointToolTypeMatch ?ei ?element ?tool)
-  ;;                         ;;        (not (ToolAtJoint ?tool ?ei ?element))
-  ;;                         ;;   )
-  ;;                         ;; )
-  ;;                    )
-  ;;      )
   ;; )
 
   ; * if there is a joint between the current element and an **assembled** element, the clamp must be there
