@@ -7,6 +7,7 @@ sys.path.append(os.path.join(HERE, ".."))
 
 from load_path import *
 from itj.parse import get_itj_pddl_problem_from_json, export_plan_to_file
+from itj.utils import VerboseToFile
 
 ################################
 
@@ -37,54 +38,49 @@ def main():
     parser.add_argument('--debug', action='store_true', help='Debug mode.')
     args = parser.parse_args()
 
-    # if args.write:
-    #     import logging
-    #     logging.basicConfig(filename=os.path.join(HERE, 'results', args.problem + \
-    #         '_{}'.format('downward' if args.nofluents else 'pyplanner') + '.log'), level=logging.DEBUG)
-    #     logger = logging.getLogger()
-    #     sys.stderr.write = logger.error
-    #     sys.stdout.write = logger.info
+    log_file_path = os.path.join(HERE, 'results', args.problem + \
+        '_{}'.format('downward' if args.nofluents else 'pyplanner') + '.log')
 
-    print('Arguments:', args)
-    cprint('Using {} backend.'.format('pyplanner' if not args.nofluents else 'downward'), 'cyan')
+    with VerboseToFile(args.write, log_file_path):
+        print('Arguments:', args)
+        cprint('Using {} backend.'.format('pyplanner' if not args.nofluents else 'downward'), 'cyan')
 
-    debug_problem_name = FILE_NAME_FROM_PROBLEM[args.problem] 
-    debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name,
-        debug=True, reset_to_home=args.reset_to_home, use_fluents=not args.nofluents, seq_n=args.seq_n)[0]
+        debug_problem_name = FILE_NAME_FROM_PROBLEM[args.problem] 
+        debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name,
+            debug=True, reset_to_home=args.reset_to_home, use_fluents=not args.nofluents, seq_n=args.seq_n)[0]
 
-    # print()
-    # print('Initial:', debug_pddl_problem.init)
-    print()
-    print('Goal:', debug_pddl_problem.goal)
-    print()
+        # print()
+        # print('Initial:', debug_pddl_problem.init)
+        print()
+        print('Goal:', debug_pddl_problem.goal)
+        print()
 
-    additional_config = {}
-    if not args.nofluents:
-        additional_config['planner'] = {
-            'search': 'eager', # eager | lazy | hill_climbing | a_star | random_walk | mcts
-            # lazy might be faster because it performs fewer heuristic evaluations but the solution quality might be lower
-            # NOTE(caelan): eager is actually faster here because evaluating heuristic goal is cheap
-            'evaluator': 'greedy', # 'bfs' | 'uniform' | 'astar' | 'wastar2' | 'wastar3' | 'greedy'
-            'heuristic': 'ff', # goal | add | ff | max | blind
-            #'heuristic': ['ff', get_bias_fn(element_from_index)],
-            # * tiebreaker
-            'successors': 'all', # all | random | first_goals | first_operators
-            # 'successors': order_fn,
-        }
-    else:
-        additional_config['planner'] = 'ff-eager' # | 'add-random-lazy'
+        additional_config = {}
+        if not args.nofluents:
+            additional_config['planner'] = {
+                'search': 'eager', # eager | lazy | hill_climbing | a_star | random_walk | mcts
+                # lazy might be faster because it performs fewer heuristic evaluations but the solution quality might be lower
+                # NOTE(caelan): eager is actually faster here because evaluating heuristic goal is cheap
+                'evaluator': 'greedy', # 'bfs' | 'uniform' | 'astar' | 'wastar2' | 'wastar3' | 'greedy'
+                'heuristic': 'ff', # goal | add | ff | max | blind
+                #'heuristic': ['ff', get_bias_fn(element_from_index)],
+                # * tiebreaker
+                'successors': 'all', # all | random | first_goals | first_operators
+                # 'successors': order_fn,
+            }
+        else:
+            additional_config['planner'] = 'ff-eager' # | 'add-random-lazy'
 
-    set_cost_scale(1)
-    with Profiler(num=25):
-    # if True:
-        solution = solve(debug_pddl_problem, algorithm=args.algorithm,
-                         max_time=INF,
-                         unit_costs=True,
-                         max_planner_time=INF,
-                         debug=args.debug, verbose=0, **additional_config)
+        set_cost_scale(1)
+        with Profiler(num=25):
+            solution = solve(debug_pddl_problem, algorithm=args.algorithm,
+                             max_time=INF,
+                             unit_costs=True,
+                             max_planner_time=INF,
+                             debug=args.debug, verbose=0, **additional_config)
 
-    plan, cost, evaluations = solution
-    plan_success = is_plan(plan)
+        plan, cost, evaluations = solution
+        plan_success = is_plan(plan)
 
     print('-'*10)
     print_plan(plan)
@@ -94,10 +90,6 @@ def main():
         plan_path = os.path.join(HERE, 'results', args.problem + '_plan' + \
             '_{}'.format('downward' if args.nofluents else 'pyplanner') + '.txt')
         export_plan_to_file(plan, plan_path)
-
-    # plan_success &= len(plan) == 53 if plan_success and not args.fluents else len(plan) == 60
-    # if not plan_success:
-    #     cprint('Plan length not correct.', 'red')
 
 if __name__ == '__main__':
     main()
