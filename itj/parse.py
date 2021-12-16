@@ -61,6 +61,8 @@ def get_itj_pddl_problem_from_json(json_file_name, debug=False,
         else:
             init.append(('Element', e))
             init.append((e_data['assembly_method']+'Element', e))
+            for sf in e_data['associated_scaffolds']:
+                init.append(('AssociatedScaffold', e, sf))
 
     joints_data = [j_data for j_data in process['assembly']['joints'] if j_data['joint_id'][0] in beam_seq and \
             j_data['joint_id'][1] in beam_seq]

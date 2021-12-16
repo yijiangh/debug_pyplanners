@@ -24,8 +24,8 @@ except KeyError:
     os.environ['PYPLANNERS_PATH'] = local_pyplanner_path
 
 import pddlstream
-cprint("Using pddlstream from {}".format(pddlstream.__file__), 'yellow')
+cprint("Using pddlstream from {}".format(os.path.dirname(pddlstream.__file__)), 'yellow')
 
 import strips # pyplanners
-cprint("Using strips (pyplanners) from {}".format(strips.__file__), 'yellow')
+cprint("Using strips (pyplanners) from {}".format(os.path.dirname(strips.__file__)), 'yellow')
 

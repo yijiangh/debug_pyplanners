@@ -1,0 +1,300 @@
+ 0) pick_tool_from_rack g2
+ 1) pick_beam_with_gripper b0 g2
+ 2) beam_placement_without_clamp b0 @traj0 g2
+ 3) retract_gripper_from_beam b0 g2
+ 4) place_tool_at_rack g2
+ 5) pick_tool_from_rack c3
+ 6) place_clamp_to_structure c3 b0 b2
+ 7) pick_tool_from_rack g2
+ 8) pick_beam_with_gripper b1 g2
+ 9) beam_placement_without_clamp b1 @traj19 g2
+10) retract_gripper_from_beam b1 g2
+11) place_tool_at_rack g2
+12) pick_tool_from_rack c4
+13) place_clamp_to_structure c4 b1 b2
+14) pick_tool_from_rack g2
+15) pick_beam_with_gripper b2 g2
+16) beam_placement_with_clamps b2 @traj26 g2
+17) retract_gripper_from_beam b2 g2
+18) place_tool_at_rack g2
+19) pick_tool_from_rack c1
+20) place_clamp_to_structure c1 b2 b4
+21) pick_clamp_from_structure c3 b0 b2
+22) place_clamp_to_structure c3 b0 b3
+23) pick_clamp_from_structure c4 b1 b2
+24) place_clamp_to_structure c4 b1 b3
+25) pick_tool_from_rack g2
+26) pick_beam_with_gripper b3 g2
+27) beam_placement_with_clamps b3 @traj27 g2
+28) retract_gripper_from_beam b3 g2
+29) place_tool_at_rack g2
+30) pick_tool_from_rack c2
+31) place_clamp_to_structure c2 b3 b4
+32) pick_tool_from_rack g2
+33) pick_beam_with_gripper b4 g2
+34) beam_placement_with_clamps b4 @traj28 g2
+35) retract_gripper_from_beam b4 g2
+36) place_tool_at_rack g2
+37) pick_clamp_from_structure c1 b2 b4
+38) place_clamp_to_structure c1 b0 b6
+39) pick_tool_from_rack g2
+40) pick_beam_with_gripper b5 g2
+41) beam_placement_without_clamp b5 @traj31 g2
+42) retract_gripper_from_beam b5 g2
+43) place_tool_at_rack g2
+44) pick_clamp_from_structure c3 b0 b3
+45) place_clamp_to_structure c3 b5 b10
+46) pick_clamp_from_structure c2 b3 b4
+47) place_clamp_to_structure c2 b5 b6
+48) pick_tool_from_rack g1
+49) pick_beam_with_gripper b6 g1
+50) beam_placement_with_clamps b6 @traj32 g1
+51) retract_gripper_from_beam b6 g1
+52) place_tool_at_rack g1
+53) pick_clamp_from_structure c1 b0 b6
+54) place_clamp_to_structure c1 b1 b8
+55) pick_tool_from_rack g2
+56) pick_beam_with_gripper b7 g2
+57) beam_placement_without_clamp b7 @traj34 g2
+58) retract_gripper_from_beam b7 g2
+59) place_tool_at_rack g2
+60) pick_clamp_from_structure c4 b1 b3
+61) place_clamp_to_structure c4 b7 b10
+62) pick_clamp_from_structure c2 b5 b6
+63) place_clamp_to_structure c2 b7 b8
+64) pick_tool_from_rack g1
+65) pick_beam_with_gripper b8 g1
+66) beam_placement_with_clamps b8 @traj35 g1
+67) retract_gripper_from_beam b8 g1
+68) place_tool_at_rack g1
+69) pick_clamp_from_structure c1 b1 b8
+70) place_clamp_to_structure c1 b5 b9
+71) pick_clamp_from_structure c2 b7 b8
+72) place_clamp_to_structure c2 b7 b9
+73) pick_tool_from_rack g2
+74) pick_beam_with_gripper b9 g2
+75) beam_placement_with_clamps b9 @traj36 g2
+76) retract_gripper_from_beam b9 g2
+77) place_tool_at_rack g2
+78) pick_clamp_from_structure c1 b5 b9
+79) place_clamp_to_structure c1 b5 b13
+80) pick_tool_from_rack g2
+81) pick_beam_with_gripper b10 g2
+82) beam_placement_with_clamps b10 @traj43 g2
+83) retract_gripper_from_beam b10 g2
+84) place_tool_at_rack g2
+85) pick_clamp_from_structure c3 b5 b10
+86) place_clamp_to_structure c3 b9 b11
+87) pick_clamp_from_structure c4 b7 b10
+88) place_clamp_to_structure c4 b10 b11
+89) pick_tool_from_rack g2
+90) pick_beam_with_gripper b11 g2
+91) beam_placement_with_clamps b11 @traj44 g2
+92) retract_gripper_from_beam b11 g2
+93) pick_beam_with_gripper b12 g2
+94) beam_placement_without_clamp b12 @traj48 g2
+95) retract_gripper_from_beam b12 g2
+96) place_tool_at_rack g2
+97) pick_clamp_from_structure c2 b7 b9
+98) place_clamp_to_structure c2 b12 b13
+99) pick_tool_from_rack g1
+100) pick_beam_with_gripper b13 g1
+101) beam_placement_with_clamps b13 @traj145 g1
+102) retract_gripper_from_beam b13 g1
+103) place_tool_at_rack g1
+104) pick_clamp_from_structure c2 b12 b13
+105) place_clamp_to_structure c2 b12 b15
+106) pick_tool_from_rack g2
+107) pick_beam_with_gripper b14 g2
+108) beam_placement_without_clamp b14 @traj146 g2
+109) retract_gripper_from_beam b14 g2
+110) place_tool_at_rack g2
+111) pick_clamp_from_structure c1 b5 b13
+112) place_clamp_to_structure c1 b14 b15
+113) pick_tool_from_rack g2
+114) pick_beam_with_gripper b15 g2
+115) beam_placement_with_clamps b15 @traj147 g2
+116) retract_gripper_from_beam b15 g2
+117) place_tool_at_rack g2
+118) pick_clamp_from_structure c3 b9 b11
+119) place_clamp_to_structure c3 b15 b18
+120) pick_clamp_from_structure c2 b12 b15
+121) place_clamp_to_structure c2 b14 b16
+122) pick_clamp_from_structure c1 b14 b15
+123) place_clamp_to_structure c1 b7 b16
+124) pick_tool_from_rack g2
+125) pick_beam_with_gripper b16 g2
+126) beam_placement_with_clamps b16 @traj148 g2
+127) retract_gripper_from_beam b16 g2
+128) place_tool_at_rack g2
+129) pick_clamp_from_structure c2 b14 b16
+130) place_clamp_to_structure c2 b12 b17
+131) pick_clamp_from_structure c1 b7 b16
+132) place_clamp_to_structure c1 b14 b17
+133) pick_tool_from_rack g2
+134) pick_beam_with_gripper b17 g2
+135) beam_placement_with_clamps b17 @traj149 g2
+136) retract_gripper_from_beam b17 g2
+137) place_tool_at_rack g2
+138) pick_clamp_from_structure c4 b10 b11
+139) place_clamp_to_structure c4 b17 b18
+140) pick_tool_from_rack g2
+141) pick_beam_with_gripper b18 g2
+142) beam_placement_with_clamps b18 @traj150 g2
+143) retract_gripper_from_beam b18 g2
+144) place_tool_at_rack g2
+145) pick_clamp_from_structure c3 b15 b18
+146) place_clamp_to_structure c3 b12 b20
+147) pick_tool_from_rack g2
+148) pick_beam_with_gripper b19 g2
+149) beam_placement_without_clamp b19 @traj151 g2
+150) retract_gripper_from_beam b19 g2
+151) place_tool_at_rack g2
+152) pick_clamp_from_structure c4 b17 b18
+153) place_clamp_to_structure c4 b19 b20
+154) pick_clamp_from_structure c2 b12 b17
+155) place_clamp_to_structure c2 b19 b22
+156) pick_tool_from_rack g2
+157) pick_beam_with_gripper b20 g2
+158) beam_placement_with_clamps b20 @traj154 g2
+159) retract_gripper_from_beam b20 g2
+160) pick_beam_with_gripper b21 g2
+161) beam_placement_without_clamp b21 @traj162 g2
+162) retract_gripper_from_beam b21 g2
+163) place_tool_at_rack g2
+164) pick_clamp_from_structure c3 b12 b20
+165) place_clamp_to_structure c3 b21 b23
+166) pick_clamp_from_structure c1 b14 b17
+167) place_clamp_to_structure c1 b21 b22
+168) pick_tool_from_rack g2
+169) pick_beam_with_gripper b22 g2
+170) beam_placement_with_clamps b22 @traj163 g2
+171) retract_gripper_from_beam b22 g2
+172) place_tool_at_rack g2
+173) pick_clamp_from_structure c2 b19 b22
+174) place_clamp_to_structure c2 b19 b29
+175) pick_clamp_from_structure c1 b21 b22
+176) place_clamp_to_structure c1 b22 b23
+177) pick_tool_from_rack g1
+178) pick_beam_with_gripper b23 g1
+179) beam_placement_with_clamps b23 @traj164 g1
+180) retract_gripper_from_beam b23 g1
+181) place_tool_at_rack g1
+182) pick_tool_from_rack g2
+183) pick_beam_with_gripper b24 g2
+184) beam_placement_without_clamp b24 @traj165 g2
+185) retract_gripper_from_beam b24 g2
+186) place_tool_at_rack g2
+187) pick_clamp_from_structure c1 b22 b23
+188) place_clamp_to_structure c1 b24 b26
+189) pick_tool_from_rack g2
+190) pick_beam_with_gripper b26 g2
+191) beam_placement_with_clamps b26 @traj173 g2
+192) retract_gripper_from_beam b26 g2
+193) place_tool_at_rack g2
+194) pick_clamp_from_structure c4 b19 b20
+195) place_clamp_to_structure c4 b26 b27
+196) pick_clamp_from_structure c1 b24 b26
+197) place_clamp_to_structure c1 b24 b27
+198) pick_tool_from_rack g2
+199) pick_beam_with_gripper b27 g2
+200) beam_placement_with_clamps b27 @traj174 g2
+201) retract_gripper_from_beam b27 g2
+202) pick_beam_with_gripper b28 g2
+203) beam_placement_without_clamp b28 @traj175 g2
+204) retract_gripper_from_beam b28 g2
+205) place_tool_at_rack g2
+206) pick_clamp_from_structure c1 b24 b27
+207) place_clamp_to_structure c1 b28 b29
+208) pick_tool_from_rack g2
+209) pick_beam_with_gripper b29 g2
+210) beam_placement_with_clamps b29 @traj176 g2
+211) retract_gripper_from_beam b29 g2
+212) place_tool_at_rack g2
+213) pick_clamp_from_structure c2 b19 b29
+214) place_clamp_to_structure c2 b24 b31
+215) pick_tool_from_rack g2
+216) pick_beam_with_gripper b30 g2
+217) beam_placement_without_clamp b30 @traj178 g2
+218) retract_gripper_from_beam b30 g2
+219) place_tool_at_rack g2
+220) pick_clamp_from_structure c1 b28 b29
+221) place_clamp_to_structure c1 b30 b31
+222) pick_tool_from_rack g2
+223) pick_beam_with_gripper b31 g2
+224) beam_placement_with_clamps b31 @traj265 g2
+225) retract_gripper_from_beam b31 g2
+226) place_tool_at_rack g2
+227) pick_clamp_from_structure c3 b21 b23
+228) place_clamp_to_structure c3 b31 b32
+229) pick_clamp_from_structure c2 b24 b31
+230) place_clamp_to_structure c2 b21 b25
+231) pick_clamp_from_structure c1 b30 b31
+232) place_clamp_to_structure c1 b24 b25
+233) pick_tool_from_rack g2
+234) pick_beam_with_gripper b25 g2
+235) beam_placement_with_clamps b25 @traj266 g2
+236) retract_gripper_from_beam b25 g2
+237) place_tool_at_rack g2
+238) pick_clamp_from_structure c4 b26 b27
+239) place_clamp_to_structure c4 b25 b32
+240) pick_tool_from_rack g2
+241) pick_beam_with_gripper b32 g2
+242) beam_placement_with_clamps b32 @traj299 g2
+243) retract_gripper_from_beam b32 g2
+244) place_tool_at_rack g2
+245) pick_clamp_from_structure c2 b21 b25
+246) place_clamp_to_structure c2 b32 b33
+247) pick_clamp_from_structure c1 b24 b25
+248) place_clamp_to_structure c1 b32 b34
+249) pick_clamp_from_structure c3 b31 b32
+250) place_clamp_to_structure c3 b30 b38
+251) pick_tool_from_rack g2
+252) pick_beam_with_gripper b33 g2
+253) beam_placement_with_clamps b33 @traj314 g2
+254) retract_gripper_from_beam b33 g2
+255) place_tool_at_rack g2
+256) pick_clamp_from_structure c2 b32 b33
+257) place_clamp_to_structure c2 b33 b34
+258) pick_tool_from_rack g2
+259) pick_beam_with_gripper b34 g2
+260) beam_placement_with_clamps b34 @traj319 g2
+261) retract_gripper_from_beam b34 g2
+262) place_tool_at_rack g2
+263) pick_clamp_from_structure c1 b32 b34
+264) place_clamp_to_structure c1 b33 b35
+265) pick_clamp_from_structure c2 b33 b34
+266) place_clamp_to_structure c2 b34 b35
+267) pick_tool_from_rack g2
+268) pick_beam_with_gripper b35 g2
+269) beam_placement_with_clamps b35 @traj320 g2
+270) retract_gripper_from_beam b35 g2
+271) place_tool_at_rack g2
+272) pick_clamp_from_structure c1 b33 b35
+273) place_clamp_to_structure c1 b28 b36
+274) pick_clamp_from_structure c2 b34 b35
+275) place_clamp_to_structure c2 b35 b36
+276) pick_tool_from_rack g2
+277) pick_beam_with_gripper b36 g2
+278) beam_placement_with_clamps b36 @traj321 g2
+279) retract_gripper_from_beam b36 g2
+280) pick_beam_with_gripper b37 g2
+281) beam_placement_without_clamp b37 @traj322 g2
+282) retract_gripper_from_beam b37 g2
+283) place_tool_at_rack g2
+284) pick_clamp_from_structure c4 b25 b32
+285) place_clamp_to_structure c4 b37 b38
+286) pick_tool_from_rack g2
+287) pick_beam_with_gripper b38 g2
+288) beam_placement_with_clamps b38 @traj323 g2
+289) retract_gripper_from_beam b38 g2
+290) place_tool_at_rack g2
+291) pick_clamp_from_structure c1 b28 b36
+292) place_clamp_to_structure c1 b38 b39
+293) pick_clamp_from_structure c3 b30 b38
+294) place_clamp_to_structure c3 b30 b39
+295) pick_clamp_from_structure c4 b37 b38
+296) place_clamp_to_structure c4 b37 b39
+297) pick_tool_from_rack g2
+298) pick_beam_with_gripper b39 g2
+299) beam_placement_with_clamps b39 @traj324 g2

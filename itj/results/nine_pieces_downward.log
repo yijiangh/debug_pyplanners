@@ -9,38 +9,38 @@ Initial: [('RobotToolChangerEmpty',), ('AtRack', 'b0'), ('Element', 'b0'), ('Gro
 Goal: ('and', ('Assembled', 'b0'), ('Assembled', 'b1'), ('Assembled', 'b2'), ('Assembled', 'b3'), ('Assembled', 'b5'), ('Assembled', 'b6'), ('Assembled', 'b7'), ('Assembled', 'b8'), ('Assembled', 'b4'))
 
 Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 100 | Solved: False | Cost: inf | Search Time: 0.001 | Sample Time: 0.000 | Time: 0.001
-Iteration: 2 | Complexity: 1 | Calls: 9 | Evaluations: 118 | Solved: False | Cost: inf | Search Time: 0.105 | Sample Time: 0.001 | Time: 0.106
-Summary: {complexity: 1, cost: 53.000, evaluations: 118, iterations: 2, length: 53, run_time: 0.295, sample_time: 0.001, search_time: 0.294, solutions: 1, solved: True, timeout: False}
-         527737 function calls (522129 primitive calls) in 0.307 seconds
+Iteration: 2 | Complexity: 1 | Calls: 9 | Evaluations: 118 | Solved: False | Cost: inf | Search Time: 0.109 | Sample Time: 0.000 | Time: 0.109
+Summary: {complexity: 1, cost: 61.000, evaluations: 118, iterations: 2, length: 61, run_time: 0.326, sample_time: 0.000, search_time: 0.326, solutions: 1, solved: True, timeout: False}
+         604019 function calls (597862 primitive calls) in 0.337 seconds
 
    Ordered by: internal time
    List reduced from 1041 to 25 due to restriction <25>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        2    0.059    0.029    0.059    0.029 {method 'read' of '_io.BufferedReader' objects}
-    17651    0.010    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
-        2    0.007    0.004    0.044    0.022 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
-     7106    0.007    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
-5940/4727    0.007    0.000    0.040    0.000 {built-in method builtins.sorted}
-        2    0.007    0.003    0.057    0.028 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
-     3028    0.006    0.000    0.010    0.000 {built-in method builtins.print}
-     4270    0.006    0.000    0.014    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
-    21723    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
-     1899    0.006    0.000    0.020    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
-    23234    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
-     5109    0.005    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
-        2    0.005    0.002    0.005    0.002 {built-in method _winapi.CreateProcess}
-    11617    0.005    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
-        2    0.005    0.002    0.005    0.002 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\fact_groups.py:80(<listcomp>)
-    11336    0.004    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
-    22672    0.003    0.000    0.003    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
-    27490    0.003    0.000    0.004    0.000 {method 'get' of 'dict' objects}
-    37523    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
-    36634    0.003    0.000    0.003    0.000 {built-in method builtins.isinstance}
-18468/18418    0.003    0.000    0.003    0.000 {built-in method builtins.hash}
-      332    0.003    0.000    0.011    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:139(fire)
-    31020    0.002    0.000    0.002    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
-      610    0.002    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
-      977    0.002    0.000    0.016    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
+        2    0.060    0.030    0.060    0.030 {method 'read' of '_io.BufferedReader' objects}
+        2    0.012    0.006    0.067    0.034 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
+    21251    0.012    0.000    0.014    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
+        2    0.010    0.005    0.060    0.030 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
+     9274    0.010    0.000    0.015    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
+     6517    0.009    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
+     5920    0.008    0.000    0.017    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
+6830/5575    0.008    0.000    0.041    0.000 {built-in method builtins.sorted}
+    24058    0.007    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
+     3387    0.006    0.000    0.010    0.000 {built-in method builtins.print}
+    24026    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
+     1981    0.005    0.000    0.019    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
+    12013    0.005    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
+     1898    0.004    0.000    0.024    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
+    31952    0.004    0.000    0.005    0.000 {method 'get' of 'dict' objects}
+    11283    0.004    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
+    43644    0.004    0.000    0.004    0.000 {built-in method builtins.isinstance}
+        2    0.004    0.002    0.004    0.002 {built-in method _winapi.CreateProcess}
+      236    0.003    0.000    0.013    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:208(translate_strips_operator_aux)
+     5674    0.003    0.000    0.019    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:173(fire)
+    42876    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+      760    0.003    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
+    22566    0.003    0.000    0.003    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
+     5871    0.003    0.000    0.005    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:183(unify)
+    35500    0.003    0.000    0.003    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
 
 

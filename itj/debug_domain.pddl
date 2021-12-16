@@ -13,6 +13,8 @@
     (JointToolTypeMatch ?element1 ?element2 ?tool)
     (GripperToolTypeMatch ?element ?tool)
 
+    (AssociatedScaffold ?element ?scaffold)
+
     (Gripper ?g)
     (Clamp ?c)
     (ScrewDriver ?sd)
@@ -22,13 +24,15 @@
     (Traj ?traj)
     (PlaceElementAction ?element ?traj)
 
-    ; * optional
+    ; * for construction sequence
     (Order ?element1 ?element2)
 
     ; * Fluent predicates (predicates that change over time, which describes the state of the sytem)
     (Attached ?object) ; o can be element, gripper or clamp
     (RobotToolChangerEmpty)
     (RobotGripperEmpty)
+
+    (NeedRetraction)
 
     (ToolNotOccupiedOnJoint ?tool)
     (ToolAtJoint ?tool ?element1 ?element2 ?adhered_element)
@@ -90,8 +94,7 @@
                     (PlaceElementAction ?element ?traj)
                     )
     :effect (and (Assembled ?element)
-                 (not (Attached ?element))
-                 (RobotGripperEmpty)
+                 (NeedRetraction)
                  )
   )
 
@@ -110,8 +113,7 @@
                     (PlaceElementAction ?element ?traj)
                     )
     :effect (and (Assembled ?element)
-                 (not (Attached ?element))
-                 (RobotGripperEmpty)
+                 (NeedRetraction)
                  )
   )
 
@@ -133,15 +135,29 @@
                     (PlaceElementAction ?element ?traj)
                     )
     :effect (and (Assembled ?element)
-                 (not (Attached ?element))
-                 (RobotGripperEmpty)
+                 (NeedRetraction)
                  )
   )
 
-  ;; (:action retract_gripper_from_beam
+  (:action retract_gripper_from_beam
+    :parameters (?element ?tool)
+    :precondition (and 
+                    (Gripper ?tool)
+                    (Attached ?tool)
+                    (Attached ?element)
+                    (Assembled ?element)
+                    (NeedRetraction)
+                    (forall (?scaffold) (imply (AssociatedScaffold ?element ?scaffold) (Assembled ?scaffold)))
+                  )
+    :effect (and (not (NeedRetraction))
+                 (not (Attached ?element))
+                 (RobotGripperEmpty)
+            )
+  )
 
+  ;; (:action retract_gripper_from_beam
   ;; (:action AssembleBeamWithScrewdriversAction
-  ;; (:action RetractScrewdriverFromBeamAction
+  ;; TODO (:action RetractScrewdriverFromBeamAction
 
   (:action manaul_assemble_scaffold
     :parameters (?element)
@@ -300,10 +316,10 @@
   )
 
   ; * if there is a joint between the current element and an **assembled** element, the clamp must be there
-  ;; (:derived (ExistNoClampAtOneAssembledJoints ?element)
-  ;;      (forall (?ei) (imply (and (Joint ?ei ?element) (Assembled ?ei))
-  ;;                           (JointOccupiedByTool ?ei ?element)
-  ;;                    )
+  ;; (:derived (ExistOccupiedScrewDrivers)
+  ;;      (exists (?tool) (imply (ScrewDriver ?tool)
+  ;;                             (not (ToolNotOccupiedOnJoint ?tool))
+  ;;                      )
   ;;      )
   ;; )
 

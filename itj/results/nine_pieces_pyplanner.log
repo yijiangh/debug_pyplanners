@@ -11,80 +11,81 @@ Goal: ('and', ('Assembled', 'b0'), ('Assembled', 'b1'), ('Assembled', 'b2'), ('A
 Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 100 | Solved: False | Cost: inf | Search Time: 0.001 | Sample Time: 0.000 | Time: 0.001
 Initial: State{Atom atrack(v1), Atom atrack(v10), Atom atrack(v11), Atom atrack(v12), Atom atrack(v13), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v2), Atom atrack(v3), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom robottoolchangerempty(), Atom toolnotoccupiedonjoint(v10), Atom toolnotoccupiedonjoint(v11), Atom toolnotoccupiedonjoint(v12), Atom toolnotoccupiedonjoint(v13)}
 Goal: PartialState{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom assembled(v9)}
-Actions: 94 | Axioms: 90
+Actions: 145 | Axioms: 90
 Search: eager | Evaluator: greedy | Heuristic: ff | Successors: all
 
 -------------------------------------------------------------------------------------
 
 State{Atom atrack(v1), Atom atrack(v10), Atom atrack(v11), Atom atrack(v12), Atom atrack(v13), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v2), Atom atrack(v3), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom robottoolchangerempty(), Atom toolnotoccupiedonjoint(v10), Atom toolnotoccupiedonjoint(v11), Atom toolnotoccupiedonjoint(v12), Atom toolnotoccupiedonjoint(v13)}
-Iterations: 0 | State Space: 1 | Expanded: 0 | Generations: 0 | Heuristic: 20 | Time: 0.006
-State{Atom atrack(v10), Atom atrack(v11), Atom atrack(v12), Atom atrack(v13), Atom atrack(v14), Atom atrack(v16), Atom atrack(v2), Atom atrack(v3), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v1), Atom attached(v15), Atom toolnotoccupiedonjoint(v10), Atom toolnotoccupiedonjoint(v11), Atom toolnotoccupiedonjoint(v12), Atom toolnotoccupiedonjoint(v13)}
-Iterations: 3 | State Space: 10 | Expanded: 9 | Generations: 9 | Heuristic: 19 | Time: 0.063
+Iterations: 0 | State Space: 1 | Expanded: 0 | Generations: 0 | Heuristic: 20 | Time: 0.007
 State{Atom assembled(v1), Atom atrack(v11), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v2), Atom atrack(v3), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom jointoccupiedbytool(v1, v3, v1), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom robotgripperempty(), Atom robottoolchangerempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v12, v1, v3, v1), Atom toolatjoint(v13, v1, v4, v1), Atom toolnotoccupiedonjoint(v11)}
-Iterations: 53 | State Space: 44 | Expanded: 43 | Generations: 43 | Heuristic: 18 | Time: 0.314
-State{Atom assembled(v1), Atom atrack(v11), Atom atrack(v14), Atom atrack(v16), Atom atrack(v3), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v2), Atom jointoccupiedbytool(v1, v3, v1), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v12, v1, v3, v1), Atom toolatjoint(v13, v1, v4, v1), Atom toolnotoccupiedonjoint(v11)}
-Iterations: 56 | State Space: 49 | Expanded: 48 | Generations: 48 | Heuristic: 17 | Time: 0.346
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v3, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom robotgripperempty(), Atom robottoolchangerempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v3, v2)}
-Iterations: 378 | State Space: 204 | Expanded: 201 | Generations: 201 | Heuristic: 16 | Time: 1.352
+Iterations: 55 | State Space: 45 | Expanded: 44 | Generations: 44 | Heuristic: 18 | Time: 0.393
+Iterations: 383 | State Space: 158 | Expanded: 158 | Generations: 158 | Heuristic: 18 | Time: 1.396
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom atrack(v14), Atom atrack(v16), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom jointoccupiedbytool(v1, v3, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v3, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom robotgripperempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v3, v1), Atom toolatjoint(v13, v2, v3, v2)}
+Iterations: 508 | State Space: 208 | Expanded: 207 | Generations: 207 | Heuristic: 17 | Time: 1.771
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v12), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v3, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom robotgripperempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v13, v2, v3, v2), Atom toolnotoccupiedonjoint(v12)}
+Iterations: 510 | State Space: 214 | Expanded: 212 | Generations: 212 | Heuristic: 16 | Time: 1.801
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v4), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom robotgripperempty(), Atom robottoolchangerempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 383 | State Space: 215 | Expanded: 213 | Generations: 213 | Heuristic: 14 | Time: 1.418
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom atrack(v14), Atom atrack(v16), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v4), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 386 | State Space: 219 | Expanded: 218 | Generations: 218 | Heuristic: 13 | Time: 1.454
+Iterations: 521 | State Space: 239 | Expanded: 237 | Generations: 237 | Heuristic: 14 | Time: 1.959
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom atrack(v14), Atom atrack(v16), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v4), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom needretraction(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
+Iterations: 528 | State Space: 244 | Expanded: 243 | Generations: 243 | Heuristic: 13 | Time: 2.000
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom atrack(v14), Atom atrack(v16), Atom atrack(v5), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom robotgripperempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 387 | State Space: 220 | Expanded: 219 | Generations: 219 | Heuristic: 12 | Time: 1.461
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom atrack(v14), Atom atrack(v16), Atom atrack(v6), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v5), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 388 | State Space: 222 | Expanded: 220 | Generations: 220 | Heuristic: 11 | Time: 1.468
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v14), Atom atrack(v16), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v7), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v6, v5), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v5, v6, v5), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 751 | State Space: 391 | Expanded: 390 | Generations: 390 | Heuristic: 10 | Time: 2.453
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v14), Atom atrack(v16), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v7), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom jointoccupiedbytool(v5, v6, v5), Atom toolatjoint(v10, v2, v8, v2), Atom toolatjoint(v11, v5, v6, v5), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 758 | State Space: 408 | Expanded: 407 | Generations: 407 | Heuristic: 9 | Time: 2.534
+Iterations: 529 | State Space: 245 | Expanded: 244 | Generations: 244 | Heuristic: 12 | Time: 2.008
+Iterations: 895 | State Space: 391 | Expanded: 391 | Generations: 391 | Heuristic: 12 | Time: 3.010
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v15), Atom atrack(v16), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v14), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v1, v6, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v6, v5), Atom robotgripperempty(), Atom toolatjoint(v10, v1, v6, v1), Atom toolatjoint(v11, v5, v6, v5), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
+Iterations: 921 | State Space: 415 | Expanded: 414 | Generations: 414 | Heuristic: 11 | Time: 3.155
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v10), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v6, v5), Atom robotgripperempty(), Atom toolatjoint(v11, v5, v6, v5), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2), Atom toolnotoccupiedonjoint(v10)}
+Iterations: 923 | State Space: 422 | Expanded: 419 | Generations: 419 | Heuristic: 10 | Time: 3.186
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom attached(v11), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom robotgripperempty(), Atom toolatjoint(v10, v2, v8, v2), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2), Atom toolnotoccupiedonjoint(v11)}
+Iterations: 926 | State Space: 434 | Expanded: 433 | Generations: 433 | Heuristic: 9 | Time: 3.256
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v7), Atom atrack(v8), Atom atrack(v9), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom robotgripperempty(), Atom robottoolchangerempty(), Atom toolatjoint(v10, v2, v8, v2), Atom toolatjoint(v11, v5, v9, v5), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 761 | State Space: 411 | Expanded: 409 | Generations: 409 | Heuristic: 8 | Time: 2.546
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom atrack(v14), Atom atrack(v16), Atom atrack(v8), Atom atrack(v9), Atom attached(v15), Atom attached(v7), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom toolatjoint(v10, v2, v8, v2), Atom toolatjoint(v11, v5, v9, v5), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 764 | State Space: 417 | Expanded: 416 | Generations: 416 | Heuristic: 7 | Time: 2.579
+Iterations: 927 | State Space: 436 | Expanded: 434 | Generations: 434 | Heuristic: 8 | Time: 3.264
+Iterations: 1250 | State Space: 608 | Expanded: 608 | Generations: 608 | Heuristic: 8 | Time: 4.265
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom atrack(v15), Atom atrack(v16), Atom atrack(v9), Atom attached(v14), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom jointoccupiedbytool(v7, v8, v7), Atom robotgripperempty(), Atom toolatjoint(v10, v2, v8, v2), Atom toolatjoint(v11, v7, v8, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
+Iterations: 1420 | State Space: 701 | Expanded: 700 | Generations: 700 | Heuristic: 7 | Time: 4.833
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom atrack(v14), Atom atrack(v16), Atom atrack(v9), Atom attached(v15), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v2, v8, v2), Atom jointoccupiedbytool(v7, v8, v7), Atom robotgripperempty(), Atom toolatjoint(v10, v2, v8, v2), Atom toolatjoint(v11, v7, v8, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 922 | State Space: 504 | Expanded: 498 | Generations: 498 | Heuristic: 6 | Time: 2.991
+Iterations: 1422 | State Space: 708 | Expanded: 702 | Generations: 702 | Heuristic: 6 | Time: 4.848
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom atrack(v14), Atom atrack(v16), Atom atrack(v9), Atom attached(v15), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom jointoccupiedbytool(v7, v8, v7), Atom robotgripperempty(), Atom toolatjoint(v10, v5, v9, v5), Atom toolatjoint(v11, v7, v8, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 929 | State Space: 514 | Expanded: 509 | Generations: 509 | Heuristic: 5 | Time: 3.037
+Iterations: 1427 | State Space: 721 | Expanded: 716 | Generations: 716 | Heuristic: 5 | Time: 4.913
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom atrack(v14), Atom atrack(v15), Atom atrack(v16), Atom atrack(v9), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom jointoccupiedbytool(v7, v9, v7), Atom robotgripperempty(), Atom robottoolchangerempty(), Atom toolatjoint(v10, v5, v9, v5), Atom toolatjoint(v11, v7, v9, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 937 | State Space: 524 | Expanded: 522 | Generations: 522 | Heuristic: 4 | Time: 3.089
+Iterations: 1429 | State Space: 724 | Expanded: 722 | Generations: 722 | Heuristic: 4 | Time: 4.939
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom atrack(v14), Atom atrack(v16), Atom atrack(v9), Atom attached(v15), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom jointoccupiedbytool(v7, v9, v7), Atom robotgripperempty(), Atom toolatjoint(v10, v5, v9, v5), Atom toolatjoint(v11, v7, v9, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 938 | State Space: 529 | Expanded: 525 | Generations: 525 | Heuristic: 2 | Time: 3.103
+Iterations: 1430 | State Space: 729 | Expanded: 725 | Generations: 725 | Heuristic: 2 | Time: 4.958
 State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom atrack(v14), Atom atrack(v16), Atom attached(v15), Atom attached(v9), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom jointoccupiedbytool(v7, v9, v7), Atom toolatjoint(v10, v5, v9, v5), Atom toolatjoint(v11, v7, v9, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 939 | State Space: 530 | Expanded: 529 | Generations: 529 | Heuristic: 1 | Time: 3.116
-State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom assembled(v9), Atom atrack(v14), Atom atrack(v16), Atom attached(v15), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom jointoccupiedbytool(v7, v9, v7), Atom robotgripperempty(), Atom toolatjoint(v10, v5, v9, v5), Atom toolatjoint(v11, v7, v9, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
-Iterations: 940 | State Space: 531 | Expanded: 530 | Generations: 530 | Heuristic: 0 | Time: 3.121
-Summary: {complexity: 0, cost: 53.000, evaluations: 100, iterations: 1, length: 53, run_time: 3.225, sample_time: 0.000, search_time: 3.225, solutions: 1, solved: True, timeout: False}
-         9247573 function calls (9051595 primitive calls) in 3.210 seconds
+Iterations: 1431 | State Space: 730 | Expanded: 729 | Generations: 729 | Heuristic: 1 | Time: 4.976
+State{Atom assembled(v1), Atom assembled(v2), Atom assembled(v3), Atom assembled(v4), Atom assembled(v5), Atom assembled(v6), Atom assembled(v7), Atom assembled(v8), Atom assembled(v9), Atom atrack(v14), Atom atrack(v16), Atom attached(v15), Atom attached(v9), Atom jointoccupiedbytool(v1, v4, v1), Atom jointoccupiedbytool(v2, v4, v2), Atom jointoccupiedbytool(v5, v9, v5), Atom jointoccupiedbytool(v7, v9, v7), Atom needretraction(), Atom toolatjoint(v10, v5, v9, v5), Atom toolatjoint(v11, v7, v9, v7), Atom toolatjoint(v12, v1, v4, v1), Atom toolatjoint(v13, v2, v4, v2)}
+Iterations: 1432 | State Space: 731 | Expanded: 730 | Generations: 730 | Heuristic: 0 | Time: 4.982
+Summary: {complexity: 0, cost: 61.000, evaluations: 100, iterations: 1, length: 61, run_time: 5.089, sample_time: 0.000, search_time: 5.089, solutions: 1, solved: True, timeout: False}
+         14456735 function calls (14175014 primitive calls) in 5.059 seconds
 
    Ordered by: internal time
    List reduced from 1000 to 25 due to restriction <25>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-      531    0.413    0.001    1.957    0.004 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:7(compute_costs)
-  1077610    0.402    0.000    0.402    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
-    68007    0.243    0.000    0.831    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:24(process_operator)
-  1168748    0.154    0.000    0.154    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\operators.py:51(__hash__)
-  1861456    0.145    0.000    0.145    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
-138574/369    0.134    0.000    0.327    0.001 C:\Users\harry\miniconda3\envs\itj\lib\copy.py:132(deepcopy)
-      531    0.115    0.000    0.261    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\operators.py:66(derive_state)
-   411572    0.108    0.000    0.108    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
-   248225    0.096    0.000    0.181    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:27(<genexpr>)
-   248225    0.091    0.000    0.173    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:28(<genexpr>)
-   205786    0.087    0.000    0.194    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
-   148690    0.083    0.000    0.166    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\states.py:49(holds)
-    61356    0.077    0.000    0.287    0.000 {built-in method _heapq.heappop}
-      478    0.056    0.000    0.220    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\ff.py:20(extract_relaxed_plan)
-    66371    0.044    0.000    0.225    0.000 {built-in method builtins.max}
-    79879    0.041    0.000    0.049    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
-    66388    0.037    0.000    0.222    0.000 {built-in method builtins.sum}
-12081/385    0.036    0.000    0.324    0.001 C:\Users\harry\miniconda3\envs\itj\lib\copy.py:269(_reconstruct)
-   516459    0.034    0.000    0.034    0.000 {method 'append' of 'list' objects}
-      531    0.028    0.000    0.125    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:20(<dictcomp>)
-   124787    0.028    0.000    0.047    0.000 {method 'add' of 'set' objects}
-    34686    0.027    0.000    0.504    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\planner\state_space.py:284(extend)
-14566/369    0.026    0.000    0.320    0.001 C:\Users\harry\miniconda3\envs\itj\lib\copy.py:237(_deepcopy_dict)
-   144420    0.026    0.000    0.026    0.000 {built-in method __new__ of type object at 0x00007FFB928CE3F0}
-    26625    0.023    0.000    0.037    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\ff.py:37(<genexpr>)
+      731    0.747    0.001    3.174    0.004 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:7(compute_costs)
+  1685759    0.671    0.000    0.671    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
+   101655    0.357    0.000    1.280    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:24(process_operator)
+  2029859    0.270    0.000    0.270    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\operators.py:51(__hash__)
+  2826659    0.225    0.000    0.225    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
+200007/537    0.202    0.000    0.488    0.001 C:\Users\harry\miniconda3\envs\itj\lib\copy.py:132(deepcopy)
+      731    0.164    0.000    0.377    0.001 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\operators.py:66(derive_state)
+   382835    0.154    0.000    0.295    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:27(<genexpr>)
+   560672    0.151    0.000    0.151    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
+   382835    0.146    0.000    0.283    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:28(<genexpr>)
+   244116    0.139    0.000    0.280    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\states.py:49(holds)
+   280336    0.119    0.000    0.270    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
+    83863    0.107    0.000    0.398    0.000 {built-in method _heapq.heappop}
+   117696    0.068    0.000    0.080    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
+      684    0.067    0.000    0.297    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\ff.py:20(extract_relaxed_plan)
+    99425    0.066    0.000    0.361    0.000 {built-in method builtins.max}
+    77865    0.057    0.000    0.830    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\planner\state_space.py:284(extend)
+   868816    0.055    0.000    0.055    0.000 {method 'append' of 'list' objects}
+    99435    0.054    0.000    0.355    0.000 {built-in method builtins.sum}
+17489/557    0.053    0.000    0.484    0.001 C:\Users\harry\miniconda3\envs\itj\lib\copy.py:269(_reconstruct)
+    79298    0.048    0.000    0.212    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\states.py:71(contains)
+      731    0.042    0.000    0.187    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pyplanners\strips\hsp.py:20(<dictcomp>)
+439260/437806    0.040    0.000    0.046    0.000 {built-in method builtins.len}
+21110/537    0.039    0.000    0.478    0.001 C:\Users\harry\miniconda3\envs\itj\lib\copy.py:237(_deepcopy_dict)
+   207096    0.037    0.000    0.037    0.000 {built-in method __new__ of type object at 0x00007FFB928CE3F0}
 
 
