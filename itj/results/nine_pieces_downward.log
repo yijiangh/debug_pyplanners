@@ -4,41 +4,43 @@ Arguments: Namespace(algorithm='incremental', debug=False, nofluents=True, probl
 [36mSolving for beam ['b0', 'b1', 'b2', 'b3', 'b5', 'b6', 'b7', 'b8', 'b4'][0m
 [33mUsing beam sequence ordering: ['b0', 'b1', 'b2', 'b3', 'b5', 'b6', 'b7', 'b8', 'b4'][0m
 
+Initial: [('RobotToolChangerEmpty',), ('AtRack', 'b0'), ('Element', 'b0'), ('GroundContactElement', 'b0'), ('AtRack', 'b1'), ('Element', 'b1'), ('GroundContactElement', 'b1'), ('AtRack', 'b2'), ('Element', 'b2'), ('ClampedElement', 'b2'), ('AtRack', 'b3'), ('Element', 'b3'), ('ClampedElement', 'b3'), ('AtRack', 'b5'), ('Element', 'b5'), ('GroundContactElement', 'b5'), ('AtRack', 'b6'), ('Element', 'b6'), ('ClampedElement', 'b6'), ('AtRack', 'b7'), ('Element', 'b7'), ('GroundContactElement', 'b7'), ('AtRack', 'b8'), ('Element', 'b8'), ('ClampedElement', 'b8'), ('AtRack', 'b4'), ('Element', 'b4'), ('ClampedElement', 'b4'), ('Joint', 'b0', 'b2'), ('Joint', 'b0', 'b3'), ('Joint', 'b0', 'b6'), ('Joint', 'b1', 'b2'), ('Joint', 'b1', 'b3'), ('Joint', 'b1', 'b8'), ('Joint', 'b5', 'b4'), ('Joint', 'b5', 'b6'), ('Joint', 'b7', 'b4'), ('Joint', 'b7', 'b8'), ('Order', 'b0', 'b1'), ('Order', 'b1', 'b2'), ('Order', 'b2', 'b3'), ('Order', 'b3', 'b5'), ('Order', 'b5', 'b6'), ('Order', 'b6', 'b7'), ('Order', 'b7', 'b8'), ('Order', 'b8', 'b4'), ('Clamp', 'c1'), ('Tool', 'c1'), ('AtRack', 'c1'), ('ToolNotOccupiedOnJoint', 'c1'), ('Clamp', 'c2'), ('Tool', 'c2'), ('AtRack', 'c2'), ('ToolNotOccupiedOnJoint', 'c2'), ('Clamp', 'c3'), ('Tool', 'c3'), ('AtRack', 'c3'), ('ToolNotOccupiedOnJoint', 'c3'), ('Clamp', 'c4'), ('Tool', 'c4'), ('AtRack', 'c4'), ('ToolNotOccupiedOnJoint', 'c4'), ('JointToolTypeMatch', 'b0', 'b2', 'c3'), ('JointToolTypeMatch', 'b0', 'b2', 'c4'), ('JointToolTypeMatch', 'b0', 'b3', 'c3'), ('JointToolTypeMatch', 'b0', 'b3', 'c4'), ('JointToolTypeMatch', 'b0', 'b6', 'c1'), ('JointToolTypeMatch', 'b0', 'b6', 'c2'), ('JointToolTypeMatch', 'b1', 'b2', 'c3'), ('JointToolTypeMatch', 'b1', 'b2', 'c4'), ('JointToolTypeMatch', 'b1', 'b3', 'c3'), ('JointToolTypeMatch', 'b1', 'b3', 'c4'), ('JointToolTypeMatch', 'b1', 'b8', 'c1'), ('JointToolTypeMatch', 'b1', 'b8', 'c2'), ('JointToolTypeMatch', 'b5', 'b4', 'c1'), ('JointToolTypeMatch', 'b5', 'b4', 'c2'), ('JointToolTypeMatch', 'b5', 'b6', 'c1'), ('JointToolTypeMatch', 'b5', 'b6', 'c2'), ('JointToolTypeMatch', 'b7', 'b4', 'c1'), ('JointToolTypeMatch', 'b7', 'b4', 'c2'), ('JointToolTypeMatch', 'b7', 'b8', 'c1'), ('JointToolTypeMatch', 'b7', 'b8', 'c2'), ('Gripper', 'g1'), ('Tool', 'g1'), ('AtRack', 'g1'), ('Gripper', 'g2'), ('Tool', 'g2'), ('AtRack', 'g2'), ('Gripper', 'g3'), ('Tool', 'g3'), ('AtRack', 'g3'), ('GripperToolTypeMatch', 'b0', 'g2'), ('GripperToolTypeMatch', 'b1', 'g2'), ('GripperToolTypeMatch', 'b2', 'g2'), ('GripperToolTypeMatch', 'b3', 'g2'), ('GripperToolTypeMatch', 'b5', 'g2'), ('GripperToolTypeMatch', 'b6', 'g1'), ('GripperToolTypeMatch', 'b7', 'g2'), ('GripperToolTypeMatch', 'b8', 'g1'), ('GripperToolTypeMatch', 'b4', 'g2')]
+
 Goal: ('and', ('Assembled', 'b0'), ('Assembled', 'b1'), ('Assembled', 'b2'), ('Assembled', 'b3'), ('Assembled', 'b5'), ('Assembled', 'b6'), ('Assembled', 'b7'), ('Assembled', 'b8'), ('Assembled', 'b4'))
 
 Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 100 | Solved: False | Cost: inf | Search Time: 0.001 | Sample Time: 0.000 | Time: 0.001
-Iteration: 2 | Complexity: 1 | Calls: 9 | Evaluations: 118 | Solved: False | Cost: inf | Search Time: 0.109 | Sample Time: 0.001 | Time: 0.110
-Summary: {complexity: 1, cost: 53.000, evaluations: 118, iterations: 2, length: 53, run_time: 0.333, sample_time: 0.001, search_time: 0.332, solutions: 1, solved: True, timeout: False}
-         481336 function calls (476901 primitive calls) in 0.347 seconds
+Iteration: 2 | Complexity: 1 | Calls: 9 | Evaluations: 118 | Solved: False | Cost: inf | Search Time: 0.105 | Sample Time: 0.001 | Time: 0.106
+Summary: {complexity: 1, cost: 53.000, evaluations: 118, iterations: 2, length: 53, run_time: 0.295, sample_time: 0.001, search_time: 0.294, solutions: 1, solved: True, timeout: False}
+         527737 function calls (522129 primitive calls) in 0.307 seconds
 
    Ordered by: internal time
-   List reduced from 1011 to 25 due to restriction <25>
+   List reduced from 1041 to 25 due to restriction <25>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        2    0.090    0.045    0.090    0.045 {method 'read' of '_io.BufferedReader' objects}
-    16047    0.010    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
-5829/4645    0.008    0.000    0.042    0.000 {built-in method builtins.sorted}
-     4991    0.008    0.000    0.008    0.000 {method 'join' of 'str' objects}
-     5540    0.007    0.000    0.011    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
-        2    0.007    0.003    0.040    0.020 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
-    20560    0.007    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
-    22728    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
-        2    0.006    0.003    0.055    0.028 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
-     1941    0.006    0.000    0.021    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
-     3163    0.006    0.000    0.011    0.000 {built-in method builtins.print}
-     3677    0.006    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
-    11364    0.005    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
-     3738    0.005    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
+        2    0.059    0.029    0.059    0.029 {method 'read' of '_io.BufferedReader' objects}
+    17651    0.010    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
+        2    0.007    0.004    0.044    0.022 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
+     7106    0.007    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
+5940/4727    0.007    0.000    0.040    0.000 {built-in method builtins.sorted}
+        2    0.007    0.003    0.057    0.028 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
+     3028    0.006    0.000    0.010    0.000 {built-in method builtins.print}
+     4270    0.006    0.000    0.014    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
+    21723    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
+     1899    0.006    0.000    0.020    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
+    23234    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
+     5109    0.005    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
         2    0.005    0.002    0.005    0.002 {built-in method _winapi.CreateProcess}
-    11333    0.004    0.000    0.008    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
-    22666    0.004    0.000    0.004    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
-    24738    0.003    0.000    0.005    0.000 {method 'get' of 'dict' objects}
-      620    0.003    0.000    0.009    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
-    34264    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
-    29577    0.003    0.000    0.003    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
-      161    0.003    0.000    0.009    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:208(translate_strips_operator_aux)
-    28888    0.003    0.000    0.003    0.000 {built-in method builtins.isinstance}
-       50    0.002    0.000    0.002    0.000 {built-in method nt.stat}
-     8899    0.002    0.000    0.004    0.000 C:\Users\harry\miniconda3\envs\itj\lib\encodings\cp1252.py:18(encode)
+    11617    0.005    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
+        2    0.005    0.002    0.005    0.002 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\fact_groups.py:80(<listcomp>)
+    11336    0.004    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
+    22672    0.003    0.000    0.003    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
+    27490    0.003    0.000    0.004    0.000 {method 'get' of 'dict' objects}
+    37523    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+    36634    0.003    0.000    0.003    0.000 {built-in method builtins.isinstance}
+18468/18418    0.003    0.000    0.003    0.000 {built-in method builtins.hash}
+      332    0.003    0.000    0.011    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:139(fire)
+    31020    0.002    0.000    0.002    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
+      610    0.002    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
+      977    0.002    0.000    0.016    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
 
 

@@ -6,8 +6,8 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(os.path.join(HERE, ".."))
 
 from load_path import *
+from utils import VerboseToFile
 from itj.parse import get_itj_pddl_problem_from_json, export_plan_to_file
-from itj.utils import VerboseToFile
 
 ################################
 
@@ -49,8 +49,8 @@ def main():
         debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name,
             debug=True, reset_to_home=args.reset_to_home, use_fluents=not args.nofluents, seq_n=args.seq_n)[0]
 
-        # print()
-        # print('Initial:', debug_pddl_problem.init)
+        print()
+        print('Initial:', debug_pddl_problem.init)
         print()
         print('Goal:', debug_pddl_problem.goal)
         print()
