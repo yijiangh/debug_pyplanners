@@ -490,6 +490,10 @@
    "type_name": "PG1500"
   }
  },
+ "metadata": {
+  "design_dir": "211010_CantiBox",
+  "process_json_file_name": "CantiBoxLeft_process.json"
+ },
  "screwdrivers": {
   "s1": {
    "type_name": "SL1"

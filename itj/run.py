@@ -8,6 +8,7 @@ sys.path.append(os.path.join(HERE, ".."))
 from load_path import *
 from utils import VerboseToFile
 from itj.parse import get_itj_pddl_problem_from_json, export_plan_to_file
+from itj.export_to_itj import save_pddlstream_plan_to_itj_process
 
 ################################
 
@@ -32,7 +33,7 @@ def main():
     parser.add_argument('--problem', default='nine_pieces', help='Problem to solve.')
     parser.add_argument('--seq_n', nargs='+', type=int, help='Zero-based index according to the Beam sequence in process.assembly.sequence. If only provide one number, `--seq_n 1`, we will only plan for one beam. If provide two numbers, `--seq_n start_id end_id`, we will plan from #start_id UNTIL #end_id. If more numbers are provided. By default, all the beams will be checked.')
 
-    parser.add_argument('--reset_to_home', action='store_true', help='Require all tools to be back on rack as goals.')
+    # parser.add_argument('--reset_to_home', action='store_true', help='Require all tools to be back on rack as goals.')
     parser.add_argument('--nofluents', action='store_true', help='Not use fluent facts in stream definitions.')
     parser.add_argument('--write', action='store_true', help='Export plan.')
     parser.add_argument('--debug', action='store_true', help='Debug mode.')
@@ -47,7 +48,7 @@ def main():
 
         debug_problem_name = FILE_NAME_FROM_PROBLEM[args.problem] 
         debug_pddl_problem = get_itj_pddl_problem_from_json(debug_problem_name,
-            debug=True, reset_to_home=args.reset_to_home, use_fluents=not args.nofluents, seq_n=args.seq_n)[0]
+            debug=True, reset_to_home=True, use_fluents=not args.nofluents, seq_n=args.seq_n)[0]
 
         print()
         print('Initial:', debug_pddl_problem.init)
@@ -90,6 +91,7 @@ def main():
         plan_path = os.path.join(HERE, 'results', args.problem + '_plan' + \
             '_{}'.format('downward' if args.nofluents else 'pyplanner') + '.txt')
         export_plan_to_file(plan, plan_path)
+        save_pddlstream_plan_to_itj_process(debug_problem_name, plan, verbose=True)
 
 if __name__ == '__main__':
     main()

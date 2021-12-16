@@ -680,5 +680,9 @@
    "type_name": "PG1000"
   }
  },
+ "metadata": {
+  "design_dir": "210128_RemodelFredPavilion",
+  "process_json_file_name": "pavilion_process.json"
+ },
  "screwdrivers": {}
 }

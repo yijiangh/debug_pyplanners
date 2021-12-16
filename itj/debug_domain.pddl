@@ -32,6 +32,7 @@
     (RobotToolChangerEmpty)
     (RobotGripperEmpty)
 
+    (ElementRackOccupied)
     (NeedRetraction)
 
     (ToolNotOccupiedOnJoint ?tool)
@@ -45,7 +46,8 @@
     (Connected ?element)
     (JointMade ?e1 ?e2)
 
-    (ClampOrScrewDriver ?tool)
+    ;; (ClampOrScrewDriver ?tool)
+    (AllScrewDriversNotOccupied)
 
     (ExistNoClampAtOneAssembledJoints ?element)
     (ExistNoScrewDriverAtOneAssembledJoints ?element)
@@ -54,6 +56,7 @@
   (:action pick_beam_with_gripper
     :parameters (?element ?tool)
     :precondition (and
+                    (AllScrewDriversNotOccupied)
                     (Gripper ?tool)
                     (GripperToolTypeMatch ?element ?tool)
                     (Attached ?tool)
@@ -69,6 +72,7 @@
                     ; ! sampled
                   )
     :effect (and (not (AtRack ?element))
+                 (not (ElementRackOccupied))
                  (Attached ?element)
                  (not (RobotGripperEmpty))
             )
@@ -159,6 +163,18 @@
   ;; (:action AssembleBeamWithScrewdriversAction
   ;; TODO (:action RetractScrewdriverFromBeamAction
 
+  (:action operator_load_beam
+    :parameters (?element)
+    :precondition (and
+                    (not (Assembled ?element))
+                    (Element ?element)
+                    (not (ElementRackOccupied))
+                    )
+    :effect (and (ElementRackOccupied)
+                 (AtRack ?element)
+            )
+  )
+
   (:action manaul_assemble_scaffold
     :parameters (?element)
     :precondition (and
@@ -194,7 +210,7 @@
   )
 
   (:action pick_tool_from_rack
-    :parameters (?tool) ;?conf1 ?conf2 ?traj)
+    :parameters (?tool)
     :precondition (and
                     (RobotToolChangerEmpty)
                     (Tool ?tool)
@@ -255,6 +271,7 @@
   (:action pick_clamp_from_structure
     :parameters (?tool ?element1 ?element2) ; ?conf1 ?conf2 ?traj)
     :precondition (and
+                    (AllScrewDriversNotOccupied)
                     (RobotToolChangerEmpty)
                     (Clamp ?tool)
                     (ToolAtJoint ?tool ?element1 ?element2 ?element1)
@@ -271,8 +288,8 @@
             )
   )
 
-  (:action pick_screwdriver_from_structure
-    :parameters (?tool ?element1 ?element2) ; ?conf1 ?conf2 ?traj)
+  (:action dock_with_screwdriver
+    :parameters (?tool ?element1 ?element2)
     :precondition (and
                     (RobotToolChangerEmpty)
                     (ScrewDriver ?tool)
@@ -281,8 +298,26 @@
                     (JointMade ?element1 ?element2)
                     ; ! sampled
                   )
-    :effect (and (Attached ?tool)
+    :effect (and 
+                 (NeedRetraction)
+                 (Attached ?tool)
                  (not (RobotToolChangerEmpty))
+            )
+  )
+
+  (:action retract_screwdriver_from_beam
+    :parameters (?tool ?element1 ?element2)
+    :precondition (and
+                    (NeedRetraction)
+                    (Attached ?tool)
+                    (ScrewDriver ?tool)
+                    (ToolAtJoint ?tool ?element1 ?element2 ?element2)
+                    (JointOccupiedByTool ?element1 ?element2 ?element2)
+                    (JointMade ?element1 ?element2)
+                    ; ! sampled
+                  )
+    :effect (and 
+                 (not (NeedRetraction))
                  ; ! tool status
                  (ToolNotOccupiedOnJoint ?tool)
                  (not (ToolAtJoint ?tool ?element1 ?element2 ?element2))
@@ -311,18 +346,18 @@
   )
 
   ; ! workaround for a bug in the adaptive algorithm
-  (:derived (ClampOrScrewDriver ?tool)
-      (or (Clamp ?tool) (ScrewDriver ?tool))
+  ;; (:derived (ClampOrScrewDriver ?tool)
+  ;;     (or (Clamp ?tool) (ScrewDriver ?tool))
+  ;; )
+
+  (:derived (AllScrewDriversNotOccupied)
+       (forall (?tool) (imply (ScrewDriver ?tool)
+                              (ToolNotOccupiedOnJoint ?tool)
+                       )
+       )
   )
 
   ; * if there is a joint between the current element and an **assembled** element, the clamp must be there
-  ;; (:derived (ExistOccupiedScrewDrivers)
-  ;;      (exists (?tool) (imply (ScrewDriver ?tool)
-  ;;                             (not (ToolNotOccupiedOnJoint ?tool))
-  ;;                      )
-  ;;      )
-  ;; )
-
   (:derived (ExistNoClampAtOneAssembledJoints ?element)
     (and
        (ClampedElement ?element)

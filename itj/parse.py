@@ -29,12 +29,16 @@ def beam_ids_from_argparse_seq_n(beam_sequence, seq_n):
     cprint('Solving for beam {}'.format(beam_ids), 'cyan')
     return beam_ids
 
-def get_itj_pddl_problem_from_json(json_file_name, debug=False,
-        reset_to_home=False, use_fluents=False, seq_n=None):
+def load_symbolic_json(json_file_name):
     json_file_path = os.path.join(HERE, json_file_name)
     with open(json_file_path, 'r') as f:
         process = json.load(f)
-    cprint('Symbolic process json parsed from {}'.format(json_file_path), 'magenta')
+    return process
+
+def get_itj_pddl_problem_from_json(json_file_name, debug=False,
+        reset_to_home=True, use_fluents=False, seq_n=None):
+    process = load_symbolic_json(json_file_name)
+    cprint('Symbolic process json parsed from {}'.format(json_file_name), 'magenta')
 
     domain_pddl = read(os.path.join(HERE, 'debug_domain.pddl'))
     if not use_fluents:
@@ -55,7 +59,6 @@ def get_itj_pddl_problem_from_json(json_file_name, debug=False,
         e_data = process['assembly']['sequence'][i]
         assert e_data['beam_id'] == e
         assert e_data['assembly_method'] != 'UNDEFINED'
-        init.extend([('AtRack', e),])
         if e_data['assembly_method'] == 'ManualAssembly':
             init.append(('Scaffold', e))
         else:
