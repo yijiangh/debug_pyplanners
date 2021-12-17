@@ -50,7 +50,7 @@ def get_itj_pddl_problem_from_json(json_file_name, debug=False,
 
     constant_map = {}
     init.extend([
-        ('RobotToolChangerEmpty',),
+        ('RobotToolChangerEmpty',), 
     ])
 
     # * Beams

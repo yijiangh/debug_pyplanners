@@ -33,7 +33,8 @@
     (RobotGripperEmpty)
 
     (ElementRackOccupied)
-    (NeedRetraction)
+    (NeedGripperRetraction)
+    (NeedScrewDriverRetraction)
 
     (ToolNotOccupiedOnJoint ?tool)
     (ToolAtJoint ?tool ?element1 ?element2 ?adhered_element)
@@ -57,6 +58,7 @@
     :parameters (?element ?tool)
     :precondition (and
                     (AllScrewDriversNotOccupied)
+                    (ElementRackOccupied)
                     (Gripper ?tool)
                     (GripperToolTypeMatch ?element ?tool)
                     (Attached ?tool)
@@ -72,9 +74,9 @@
                     ; ! sampled
                   )
     :effect (and (not (AtRack ?element))
-                 (not (ElementRackOccupied))
                  (Attached ?element)
                  (not (RobotGripperEmpty))
+                 (not (ElementRackOccupied))
             )
   )
 
@@ -98,8 +100,8 @@
                     (PlaceElementAction ?element ?traj)
                     )
     :effect (and (Assembled ?element)
-                 (NeedRetraction)
-                 )
+                 (NeedGripperRetraction)
+            )
   )
 
   (:action beam_placement_without_clamp
@@ -117,7 +119,7 @@
                     (PlaceElementAction ?element ?traj)
                     )
     :effect (and (Assembled ?element)
-                 (NeedRetraction)
+                 (NeedGripperRetraction)
                  )
   )
 
@@ -139,7 +141,7 @@
                     (PlaceElementAction ?element ?traj)
                     )
     :effect (and (Assembled ?element)
-                 (NeedRetraction)
+                 (NeedGripperRetraction)
                  )
   )
 
@@ -150,17 +152,15 @@
                     (Attached ?tool)
                     (Attached ?element)
                     (Assembled ?element)
-                    (NeedRetraction)
+                    (NeedGripperRetraction)
                     (forall (?scaffold) (imply (AssociatedScaffold ?element ?scaffold) (Assembled ?scaffold)))
                   )
-    :effect (and (not (NeedRetraction))
+    :effect (and (not (NeedGripperRetraction))
                  (not (Attached ?element))
                  (RobotGripperEmpty)
             )
   )
 
-  ;; (:action retract_gripper_from_beam
-  ;; (:action AssembleBeamWithScrewdriversAction
   ;; TODO (:action RetractScrewdriverFromBeamAction
 
   (:action operator_load_beam
@@ -169,6 +169,7 @@
                     (not (Assembled ?element))
                     (Element ?element)
                     (not (ElementRackOccupied))
+                    (RobotGripperEmpty)
                     )
     :effect (and (ElementRackOccupied)
                  (AtRack ?element)
@@ -193,6 +194,7 @@
                     (Attached ?element2)
                     (Assembled ?element1)
                     (ScrewDriver ?tool)
+                    (AtRack ?tool)
                     (JointToolTypeMatch ?element1 ?element2 ?tool)
                     (ToolNotOccupiedOnJoint ?tool)
                     (not (JointOccupiedByTool ?element1 ?element2 ?element2))
@@ -206,7 +208,8 @@
                  (ToolAtJoint ?tool ?element1 ?element2 ?element2)
                  (JointOccupiedByTool ?element1 ?element2 ?element2)
                  (not (ToolNotOccupiedOnJoint ?tool))
-                 )
+                 (not (AtRack ?tool))
+            )
   )
 
   (:action pick_tool_from_rack
@@ -232,12 +235,11 @@
                     (Tool ?tool)
                     (imply (Gripper ?tool) (RobotGripperEmpty))
                     ; ! sampled
-                    )
+                  )
     :effect (and (not (Attached ?tool))
                  (RobotToolChangerEmpty)
-                 ; ! tool status
                  (AtRack ?tool)
-                 )
+            )
   )
   
   ;; tool is attached to the robot
@@ -299,8 +301,7 @@
                     ; ! sampled
                   )
     :effect (and 
-                 (NeedRetraction)
-                 (Attached ?tool)
+                 (NeedScrewDriverRetraction)
                  (not (RobotToolChangerEmpty))
             )
   )
@@ -308,8 +309,7 @@
   (:action retract_screwdriver_from_beam
     :parameters (?tool ?element1 ?element2)
     :precondition (and
-                    (NeedRetraction)
-                    (Attached ?tool)
+                    (NeedScrewDriverRetraction)
                     (ScrewDriver ?tool)
                     (ToolAtJoint ?tool ?element1 ?element2 ?element2)
                     (JointOccupiedByTool ?element1 ?element2 ?element2)
@@ -317,7 +317,8 @@
                     ; ! sampled
                   )
     :effect (and 
-                 (not (NeedRetraction))
+                 (not (NeedScrewDriverRetraction))
+                 (Attached ?tool)
                  ; ! tool status
                  (ToolNotOccupiedOnJoint ?tool)
                  (not (ToolAtJoint ?tool ?element1 ?element2 ?element2))

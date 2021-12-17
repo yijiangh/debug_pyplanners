@@ -8,39 +8,39 @@ Initial: [('RobotToolChangerEmpty',), ('Element', 'b1'), ('GroundContactElement'
 
 Goal: ('and', ('Assembled', 'b1'), ('Assembled', 'b0'), ('Assembled', 'b2'), ('Assembled', 'b23'), ('Assembled', 'b25'), ('Assembled', 'b24'), ('Assembled', 'b3'), ('Assembled', 'b20'), ('Assembled', 'b22'), ('Assembled', 'b21'), ('Assembled', 'b4'), ('Assembled', 'b9'), ('Assembled', 'b5'), ('Assembled', 'b26'), ('Assembled', 'b27'), ('Assembled', 'b28'), ('Assembled', 'b6'), ('Assembled', 'b7'), ('Assembled', 'b30'), ('Assembled', 'b29'), ('Assembled', 'b31'), ('Assembled', 'b12'), ('Assembled', 'b13'), ('Assembled', 'b8'), ('Assembled', 'b10'), ('Assembled', 'b11'), ('Assembled', 'b14'), ('Assembled', 'b15'), ('Assembled', 'b16'), ('Assembled', 'b17'), ('Assembled', 'b18'), ('Assembled', 'b19'), ('AtRack', 'c1'), ('AtRack', 'c2'), ('AtRack', 'c3'), ('AtRack', 'c4'), ('AtRack', 'g1'), ('AtRack', 'g2'), ('AtRack', 'g3'), ('AtRack', 's1'), ('AtRack', 's2'), ('AtRack', 's3'), ('AtRack', 's4'))
 
-Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 277 | Solved: False | Cost: inf | Search Time: 0.003 | Sample Time: 0.000 | Time: 0.003
-Iteration: 2 | Complexity: 1 | Calls: 20 | Evaluations: 317 | Solved: False | Cost: inf | Search Time: 0.433 | Sample Time: 0.001 | Time: 0.434
-Summary: {complexity: 1, cost: 245.000, evaluations: 317, iterations: 2, length: 245, run_time: 2.760, sample_time: 0.001, search_time: 2.759, solutions: 1, solved: True, timeout: False}
-         2846689 function calls (2832374 primitive calls) in 2.778 seconds
+Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 277 | Solved: False | Cost: inf | Search Time: 0.004 | Sample Time: 0.000 | Time: 0.004
+Iteration: 2 | Complexity: 1 | Calls: 20 | Evaluations: 317 | Solved: False | Cost: inf | Search Time: 0.409 | Sample Time: 0.002 | Time: 0.411
+Summary: {complexity: 1, cost: 254.000, evaluations: 317, iterations: 2, length: 254, run_time: 4.557, sample_time: 0.002, search_time: 4.555, solutions: 1, solved: True, timeout: False}
+         2833119 function calls (2818721 primitive calls) in 4.575 seconds
 
    Ordered by: internal time
    List reduced from 1042 to 25 due to restriction <25>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        2    1.412    0.706    1.412    0.706 {method 'read' of '_io.BufferedReader' objects}
-   107351    0.093    0.000    0.104    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
-        2    0.081    0.041    0.452    0.226 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
-    53170    0.053    0.000    0.111    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
-     6892    0.051    0.000    0.051    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\simplify.py:60(__init__)
-        2    0.049    0.024    0.320    0.160 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
-    12238    0.046    0.000    0.046    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:47(__init__)
-    30298    0.046    0.000    0.095    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
-29114/22222    0.045    0.000    0.191    0.000 {built-in method builtins.sorted}
-   156240    0.039    0.000    0.039    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
-   139132    0.037    0.000    0.037    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
-    33497    0.037    0.000    0.042    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
-    12224    0.035    0.000    0.164    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
-    78120    0.032    0.000    0.071    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
-   146504    0.024    0.000    0.024    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
-    73252    0.024    0.000    0.049    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
-    11008    0.024    0.000    0.124    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
-     6892    0.019    0.000    0.021    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\simplify.py:201(register_variable)
-   152469    0.019    0.000    0.025    0.000 {method 'get' of 'dict' objects}
-    11046    0.017    0.000    0.030    0.000 {built-in method builtins.print}
-   212896    0.016    0.000    0.016    0.000 {built-in method builtins.isinstance}
-     1100    0.016    0.000    0.115    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:139(fire)
-    30446    0.015    0.000    0.086    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:173(fire)
-   181575    0.015    0.000    0.015    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
-    32156    0.015    0.000    0.022    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:183(unify)
+        2    3.203    1.602    3.203    1.602 {method 'read' of '_io.BufferedReader' objects}
+        2    0.084    0.042    0.450    0.225 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
+   106362    0.063    0.000    0.074    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
+     6893    0.053    0.000    0.053    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\simplify.py:60(__init__)
+    53170    0.052    0.000    0.081    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
+        2    0.048    0.024    0.316    0.158 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
+28042/21149    0.047    0.000    0.204    0.000 {built-in method builtins.sorted}
+     1100    0.046    0.000    0.115    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:139(fire)
+    30153    0.044    0.000    0.093    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
+   156270    0.042    0.000    0.042    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
+    12224    0.041    0.000    0.041    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:79(<dictcomp>)
+   137489    0.038    0.000    0.038    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
+    12224    0.036    0.000    0.130    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
+    33497    0.036    0.000    0.041    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
+    78135    0.034    0.000    0.076    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
+    73252    0.024    0.000    0.047    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
+    11008    0.024    0.000    0.117    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
+   146504    0.022    0.000    0.022    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
+   150752    0.018    0.000    0.025    0.000 {method 'get' of 'dict' objects}
+    11110    0.018    0.000    0.031    0.000 {built-in method builtins.print}
+   213136    0.016    0.000    0.017    0.000 {built-in method builtins.isinstance}
+   179555    0.015    0.000    0.015    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
+    30446    0.015    0.000    0.084    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:173(fire)
+    32157    0.015    0.000    0.022    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:183(unify)
+     2758    0.014    0.000    0.042    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
 
 
