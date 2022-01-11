@@ -1,46 +1,389 @@
-Arguments: Namespace(algorithm='incremental', debug=False, nofluents=True, problem='nine_pieces', seq_n=None, write=True)
+Arguments: Namespace(algorithm='incremental', debug=True, fd_search='ff-eager', nofluents=True, pp_h='ff', pp_search='eager', problem='nine_pieces', save_dir='result_fd_ff_eager', seq_n=None, write=True)
 [36mUsing downward backend.[0m
 [35mSymbolic process json parsed from nine_pieces_process_symbolic.json[0m
 [36mSolving for beam ['b0', 'b1', 'b2', 'b3', 'b5', 'b6', 'b7', 'b8', 'b4'][0m
 [33mUsing beam sequence ordering: ['b0', 'b1', 'b2', 'b3', 'b5', 'b6', 'b7', 'b8', 'b4'][0m
 
-Initial: [('RobotToolChangerEmpty',), ('Element', 'b0'), ('GroundContactElement', 'b0'), ('Element', 'b1'), ('GroundContactElement', 'b1'), ('Element', 'b2'), ('ClampedElement', 'b2'), ('Element', 'b3'), ('ClampedElement', 'b3'), ('Element', 'b5'), ('GroundContactElement', 'b5'), ('Element', 'b6'), ('ClampedElement', 'b6'), ('Element', 'b7'), ('GroundContactElement', 'b7'), ('Element', 'b8'), ('ClampedElement', 'b8'), ('Element', 'b4'), ('ClampedElement', 'b4'), ('Joint', 'b0', 'b2'), ('Joint', 'b0', 'b3'), ('Joint', 'b0', 'b6'), ('Joint', 'b1', 'b2'), ('Joint', 'b1', 'b3'), ('Joint', 'b1', 'b8'), ('Joint', 'b5', 'b4'), ('Joint', 'b5', 'b6'), ('Joint', 'b7', 'b4'), ('Joint', 'b7', 'b8'), ('Order', 'b0', 'b1'), ('Order', 'b1', 'b2'), ('Order', 'b2', 'b3'), ('Order', 'b3', 'b5'), ('Order', 'b5', 'b6'), ('Order', 'b6', 'b7'), ('Order', 'b7', 'b8'), ('Order', 'b8', 'b4'), ('Clamp', 'c1'), ('Tool', 'c1'), ('AtRack', 'c1'), ('ToolNotOccupiedOnJoint', 'c1'), ('Clamp', 'c2'), ('Tool', 'c2'), ('AtRack', 'c2'), ('ToolNotOccupiedOnJoint', 'c2'), ('Clamp', 'c3'), ('Tool', 'c3'), ('AtRack', 'c3'), ('ToolNotOccupiedOnJoint', 'c3'), ('Clamp', 'c4'), ('Tool', 'c4'), ('AtRack', 'c4'), ('ToolNotOccupiedOnJoint', 'c4'), ('JointToolTypeMatch', 'b0', 'b2', 'c3'), ('JointToolTypeMatch', 'b0', 'b2', 'c4'), ('JointToolTypeMatch', 'b0', 'b3', 'c3'), ('JointToolTypeMatch', 'b0', 'b3', 'c4'), ('JointToolTypeMatch', 'b0', 'b6', 'c1'), ('JointToolTypeMatch', 'b0', 'b6', 'c2'), ('JointToolTypeMatch', 'b1', 'b2', 'c3'), ('JointToolTypeMatch', 'b1', 'b2', 'c4'), ('JointToolTypeMatch', 'b1', 'b3', 'c3'), ('JointToolTypeMatch', 'b1', 'b3', 'c4'), ('JointToolTypeMatch', 'b1', 'b8', 'c1'), ('JointToolTypeMatch', 'b1', 'b8', 'c2'), ('JointToolTypeMatch', 'b5', 'b4', 'c1'), ('JointToolTypeMatch', 'b5', 'b4', 'c2'), ('JointToolTypeMatch', 'b5', 'b6', 'c1'), ('JointToolTypeMatch', 'b5', 'b6', 'c2'), ('JointToolTypeMatch', 'b7', 'b4', 'c1'), ('JointToolTypeMatch', 'b7', 'b4', 'c2'), ('JointToolTypeMatch', 'b7', 'b8', 'c1'), ('JointToolTypeMatch', 'b7', 'b8', 'c2'), ('Gripper', 'g1'), ('Tool', 'g1'), ('AtRack', 'g1'), ('Gripper', 'g2'), ('Tool', 'g2'), ('AtRack', 'g2'), ('Gripper', 'g3'), ('Tool', 'g3'), ('AtRack', 'g3'), ('GripperToolTypeMatch', 'b0', 'g2'), ('GripperToolTypeMatch', 'b1', 'g2'), ('GripperToolTypeMatch', 'b2', 'g2'), ('GripperToolTypeMatch', 'b3', 'g2'), ('GripperToolTypeMatch', 'b5', 'g2'), ('GripperToolTypeMatch', 'b6', 'g1'), ('GripperToolTypeMatch', 'b7', 'g2'), ('GripperToolTypeMatch', 'b8', 'g1'), ('GripperToolTypeMatch', 'b4', 'g2')]
+Initial: [('=', ('Cost',), 10.0), ('=', ('total-cost',), 0), ('RobotToolChangerEmpty',), ('Element', 'b0'), ('GroundContactElement', 'b0'), ('Element', 'b1'), ('GroundContactElement', 'b1'), ('Element', 'b2'), ('ClampedElement', 'b2'), ('Element', 'b3'), ('ClampedElement', 'b3'), ('Element', 'b5'), ('GroundContactElement', 'b5'), ('Element', 'b6'), ('ClampedElement', 'b6'), ('Element', 'b7'), ('GroundContactElement', 'b7'), ('Element', 'b8'), ('ClampedElement', 'b8'), ('Element', 'b4'), ('ClampedElement', 'b4'), ('Joint', 'b0', 'b2'), ('Joint', 'b0', 'b3'), ('Joint', 'b0', 'b6'), ('Joint', 'b1', 'b2'), ('Joint', 'b1', 'b3'), ('Joint', 'b1', 'b8'), ('Joint', 'b5', 'b4'), ('Joint', 'b5', 'b6'), ('Joint', 'b7', 'b4'), ('Joint', 'b7', 'b8'), ('Order', 'b0', 'b1'), ('Order', 'b1', 'b2'), ('Order', 'b2', 'b3'), ('Order', 'b3', 'b5'), ('Order', 'b5', 'b6'), ('Order', 'b6', 'b7'), ('Order', 'b7', 'b8'), ('Order', 'b8', 'b4'), ('Clamp', 'c1'), ('Tool', 'c1'), ('AtRack', 'c1'), ('ToolNotOccupiedOnJoint', 'c1'), ('Clamp', 'c2'), ('Tool', 'c2'), ('AtRack', 'c2'), ('ToolNotOccupiedOnJoint', 'c2'), ('Clamp', 'c3'), ('Tool', 'c3'), ('AtRack', 'c3'), ('ToolNotOccupiedOnJoint', 'c3'), ('Clamp', 'c4'), ('Tool', 'c4'), ('AtRack', 'c4'), ('ToolNotOccupiedOnJoint', 'c4'), ('JointToolTypeMatch', 'b0', 'b2', 'c3'), ('JointToolTypeMatch', 'b0', 'b2', 'c4'), ('JointToolTypeMatch', 'b0', 'b3', 'c3'), ('JointToolTypeMatch', 'b0', 'b3', 'c4'), ('JointToolTypeMatch', 'b0', 'b6', 'c1'), ('JointToolTypeMatch', 'b0', 'b6', 'c2'), ('JointToolTypeMatch', 'b1', 'b2', 'c3'), ('JointToolTypeMatch', 'b1', 'b2', 'c4'), ('JointToolTypeMatch', 'b1', 'b3', 'c3'), ('JointToolTypeMatch', 'b1', 'b3', 'c4'), ('JointToolTypeMatch', 'b1', 'b8', 'c1'), ('JointToolTypeMatch', 'b1', 'b8', 'c2'), ('JointToolTypeMatch', 'b5', 'b4', 'c1'), ('JointToolTypeMatch', 'b5', 'b4', 'c2'), ('JointToolTypeMatch', 'b5', 'b6', 'c1'), ('JointToolTypeMatch', 'b5', 'b6', 'c2'), ('JointToolTypeMatch', 'b7', 'b4', 'c1'), ('JointToolTypeMatch', 'b7', 'b4', 'c2'), ('JointToolTypeMatch', 'b7', 'b8', 'c1'), ('JointToolTypeMatch', 'b7', 'b8', 'c2'), ('Gripper', 'g1'), ('Tool', 'g1'), ('AtRack', 'g1'), ('Gripper', 'g2'), ('Tool', 'g2'), ('AtRack', 'g2'), ('Gripper', 'g3'), ('Tool', 'g3'), ('AtRack', 'g3'), ('GripperToolTypeMatch', 'b0', 'g2'), ('GripperToolTypeMatch', 'b1', 'g2'), ('GripperToolTypeMatch', 'b2', 'g2'), ('GripperToolTypeMatch', 'b3', 'g2'), ('GripperToolTypeMatch', 'b5', 'g2'), ('GripperToolTypeMatch', 'b6', 'g1'), ('GripperToolTypeMatch', 'b7', 'g2'), ('GripperToolTypeMatch', 'b8', 'g1'), ('GripperToolTypeMatch', 'b4', 'g2')]
 
 Goal: ('and', ('Assembled', 'b0'), ('Assembled', 'b1'), ('Assembled', 'b2'), ('Assembled', 'b3'), ('Assembled', 'b5'), ('Assembled', 'b6'), ('Assembled', 'b7'), ('Assembled', 'b8'), ('Assembled', 'b4'), ('AtRack', 'c1'), ('AtRack', 'c2'), ('AtRack', 'c3'), ('AtRack', 'c4'), ('AtRack', 'g1'), ('AtRack', 'g2'), ('AtRack', 'g3'))
 
-Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 91 | Solved: False | Cost: inf | Search Time: 0.002 | Sample Time: 0.000 | Time: 0.002
-Iteration: 2 | Complexity: 1 | Calls: 9 | Evaluations: 109 | Solved: False | Cost: inf | Search Time: 0.108 | Sample Time: 0.000 | Time: 0.108
-Summary: {complexity: 1, cost: 84.000, evaluations: 109, iterations: 2, length: 84, run_time: 0.388, sample_time: 0.000, search_time: 0.388, solutions: 1, solved: True, timeout: False}
-         631212 function calls (624088 primitive calls) in 0.402 seconds
+Eager Calls: 0 | Successes: 0 | Results: 0 | Counts: {}
+Iteration: 1 | Complexity: 0 | Calls: 0 | Evaluations: 93 | Solved: False | Cost: inf | Search Time: 0.002 | Sample Time: 0.000 | Time: 0.002
+
+Generating Datalog program... [0.000s CPU, 0.002s wall-clock]
+Normalizing Datalog program...
+Duplicate arguments: Adding equality conditions.
+Trivial rules: Converted to facts.
+Normalizing Datalog program: [0.000s CPU, 0.006s wall-clock]
+Preparing model... [0.000s CPU, 0.002s wall-clock]
+Generated 74 rules.
+Computing model... [0.016s CPU, 0.017s wall-clock]
+1532 relevant atoms
+164 auxiliary atoms
+1696 final queue length
+2552 total queue pushes
+Completing instantiation... [0.031s CPU, 0.021s wall-clock]
+Infeasible: False
+Instantiation time: 0.048s
+Instantiated frequencies:
+Atoms: {allscrewdriversnotoccupied: 1, assembled: 16, atrack: 16, attached: 16, elementrackoccupied: 1, existnoclampatoneassembledjoints: 5, existnoscrewdriveratoneassembledjoints: 5, jointmade: 256, jointoccupiedbytool: 20, needscrewdriverretraction: 1, new-axiom@0: 8, new-axiom@2: 1, robotgripperempty: 1, robottoolchangerempty: 1, toolatjoint: 40, toolnotoccupiedonjoint: 4}
+Actions: {operator_load_beam: 9, pick_beam_with_gripper: 9, pick_clamp_from_structure: 20, pick_tool_from_rack: 7, place_clamp_to_structure: 20, place_tool_at_rack: 11}
+Axioms: {allscrewdriversnotoccupied: 1, existnoclampatoneassembledjoints: 10, jointmade: 502, new-axiom@0: 8}
+
+Computing fact groups...
+Finding invariants...
+22 initial candidates
+Finding invariants: [0.000s CPU, 0.008s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+392 uncovered facts
+Choosing groups: [0.000s CPU, 0.001s wall-clock]
+Building translation key... [0.016s CPU, 0.007s wall-clock]
+Computing fact groups: [0.031s CPU, 0.028s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.002s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.001s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.001s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.001s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.008s wall-clock]
+Translating task: [0.016s CPU, 0.016s wall-clock]
+Detecting unreachable propositions...
+Simplified to trivially false goal! Generating unsolvable task...
+Detecting unreachable propositions: [0.000s CPU, 0.004s wall-clock]
+
+--------------------------------------------------
+
+Search command: C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin\downward --internal-plan-file temp/sas_plan --heuristic "h=ff(transform=adapt_costs(cost_type=PLUSONE))" --search "eager_greedy([h],max_time=infinity,bound=infinity)" < temp/output.sas
+[t=3.19e-05s, 664 KB] reading input...
+[t=0.0001315s, 664 KB] done reading input!
+[t=0.0019183s, 936 KB] Simplifying 0 unary operators... done! [0 unary operators]
+[t=0.0019341s, 936 KB] time to simplify: 2.05e-05s
+[t=0.0019432s, 936 KB] Initializing additive heuristic...
+[t=0.001948s, 936 KB] Initializing FF heuristic...
+[t=0.0020024s, 936 KB] Building successor generator...done!
+[t=0.0020193s, 936 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.0020247s, 936 KB] time for successor generation creation: 5.8e-06s
+[t=0.0020349s, 936 KB] Variables: 1
+[t=0.00204s, 936 KB] FactPairs: 2
+[t=0.0020461s, 936 KB] Bytes per state: 4
+[t=0.0021849s, 936 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.0022139s, 936 KB] Initial state is a dead end.
+[t=0.0022201s, 936 KB] Initial heuristic value for ff(transform = adapt_costs(cost_type = plusone)): infinity
+[t=0.0022254s, 936 KB] pruning method: none
+[t=0.0022311s, 936 KB] Completely explored state space -- no solution!
+[t=0.0022363s, 936 KB] Actual search time: 8.2e-06s
+[t=0.0022413s, 936 KB] Expanded 0 state(s).
+[t=0.0022413s, 936 KB] Reopened 0 state(s).
+[t=0.0022413s, 936 KB] Evaluated 1 state(s).
+[t=0.0022413s, 936 KB] Evaluations: 1
+[t=0.0022413s, 936 KB] Generated 0 state(s).
+[t=0.0022413s, 936 KB] Dead ends: 0 state(s).
+[t=0.0022413s, 936 KB] Number of registered states: 1
+[t=0.0022413s, 936 KB] Int hash set load factor: 1/1 = 1
+[t=0.0022413s, 936 KB] Int hash set resizes: 0
+[t=0.0022413s, 936 KB] Search time: 5.79e-05s
+[t=0.0022413s, 936 KB] Total time: 0.0022413s
+Search stopped without finding a solution.
+Search runtime: 0.024
+Plans: []
+Total runtime: 0.025
+iter=inf, outs=1) sample-place-element:(b0)->[(@traj0)]
+iter=inf, outs=1) sample-place-element:(b1)->[(@traj1)]
+iter=inf, outs=1) sample-place-element:(b2)->[(@traj2)]
+iter=inf, outs=1) sample-place-element:(b3)->[(@traj3)]
+iter=inf, outs=1) sample-place-element:(b5)->[(@traj4)]
+iter=inf, outs=1) sample-place-element:(b6)->[(@traj5)]
+iter=inf, outs=1) sample-place-element:(b7)->[(@traj6)]
+iter=inf, outs=1) sample-place-element:(b8)->[(@traj7)]
+iter=inf, outs=1) sample-place-element:(b4)->[(@traj8)]
+Eager Calls: 9 | Successes: 9 | Results: 9 | Counts: {sample-place-element: 9}
+Iteration: 2 | Complexity: 1 | Calls: 9 | Evaluations: 111 | Solved: False | Cost: inf | Search Time: 0.133 | Sample Time: 0.001 | Time: 0.134
+
+Generating Datalog program... [0.000s CPU, 0.002s wall-clock]
+Normalizing Datalog program...
+Duplicate arguments: Adding equality conditions.
+Trivial rules: Converted to facts.
+Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.002s wall-clock]
+Generated 74 rules.
+Computing model... [0.047s CPU, 0.037s wall-clock]
+3810 relevant atoms
+272 auxiliary atoms
+4082 final queue length
+7088 total queue pushes
+Completing instantiation... [0.047s CPU, 0.050s wall-clock]
+Infeasible: False
+Instantiation time: 0.092s
+Instantiated frequencies:
+Atoms: {allscrewdriversnotoccupied: 1, assembled: 25, atrack: 25, attached: 25, elementrackoccupied: 1, existnoclampatoneassembledjoints: 5, existnoscrewdriveratoneassembledjoints: 5, jointmade: 625, jointoccupiedbytool: 20, needgripperretraction: 1, needscrewdriverretraction: 1, new-axiom@0: 8, new-axiom@2: 1, robotgripperempty: 1, robottoolchangerempty: 1, toolatjoint: 40, toolnotoccupiedonjoint: 4}
+Actions: {beam_placement_with_clamps: 15, beam_placement_without_clamp: 12, operator_load_beam: 9, pick_beam_with_gripper: 9, pick_clamp_from_structure: 20, pick_tool_from_rack: 7, place_clamp_to_structure: 20, place_tool_at_rack: 11, retract_gripper_from_beam: 75}
+Axioms: {allscrewdriversnotoccupied: 1, existnoclampatoneassembledjoints: 10, jointmade: 1240, new-axiom@0: 8}
+
+Computing fact groups...
+Finding invariants...
+22 initial candidates
+Finding invariants: [0.016s CPU, 0.008s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+789 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.016s CPU, 0.005s wall-clock]
+Computing fact groups: [0.031s CPU, 0.024s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.001s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.002s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.001s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.007s wall-clock]
+Translating task: [0.016s CPU, 0.025s wall-clock]
+Detecting unreachable propositions...
+48 operators removed
+0 axioms removed
+1372 propositions removed
+Detecting unreachable propositions: [0.047s CPU, 0.042s wall-clock]
+Reordering and filtering variables...
+103 of 103 variables necessary.
+0 of 0 mutex groups necessary.
+130 of 130 operators necessary.
+77 of 77 axiom rules necessary.
+Reordering and filtering variables: [0.016s CPU, 0.007s wall-clock]
+Translator variables: 103
+Translator derived variables: 24
+Translator facts: 206
+Translator goal facts: 16
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 130
+Translator axioms: 77
+Translator task size: 1607
+warning: could not determine peak memory
+Translation time: 0.102s
+
+--------------------------------------------------
+
+Search command: C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin\downward --internal-plan-file temp/sas_plan --heuristic "h=ff(transform=adapt_costs(cost_type=PLUSONE))" --search "eager_greedy([h],max_time=infinity,bound=infinity)" < temp/output.sas
+[t=3.07e-05s, 660 KB] reading input...
+[t=0.0026654s, 740 KB] done reading input!
+[t=0.004948s, 1060 KB] Simplifying 523 unary operators... done! [471 unary operators]
+[t=0.0055238s, 1080 KB] time to simplify: 0.0005815s
+[t=0.0057149s, 1080 KB] Initializing additive heuristic...
+[t=0.0057212s, 1080 KB] Initializing FF heuristic...
+[t=0.0058095s, 1080 KB] Building successor generator...done!
+[t=0.0060115s, 1080 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.0060175s, 1080 KB] time for successor generation creation: 0.0001898s
+[t=0.0060285s, 1080 KB] Variables: 103
+[t=0.0060337s, 1080 KB] FactPairs: 206
+[t=0.0060408s, 1080 KB] Bytes per state: 16
+[t=0.0062068s, 1080 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.0062721s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 29
+[t=0.0062796s, 1080 KB] g=0, 1 evaluated, 0 expanded
+[t=0.0062924s, 1080 KB] Initial heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 29
+[t=0.0062981s, 1080 KB] pruning method: none
+[t=0.006463s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 28
+[t=0.0064702s, 1080 KB] g=2, 10 evaluated, 2 expanded
+[t=0.022456s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 27
+[t=0.02247s, 1080 KB] g=24, 1258 evaluated, 402 expanded
+[t=0.0226468s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 26
+[t=0.0226538s, 1080 KB] g=26, 1270 evaluated, 405 expanded
+[t=0.0234537s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 25
+[t=0.0234611s, 1080 KB] g=26, 1326 evaluated, 429 expanded
+[t=0.0252923s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 24
+[t=0.0252998s, 1080 KB] g=31, 1455 evaluated, 498 expanded
+[t=0.0253392s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 23
+[t=0.0253452s, 1080 KB] g=32, 1457 evaluated, 499 expanded
+[t=0.0254264s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 22
+[t=0.0254326s, 1080 KB] g=34, 1464 evaluated, 501 expanded
+[t=0.0255157s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 21
+[t=0.0255218s, 1080 KB] g=35, 1470 evaluated, 502 expanded
+[t=0.0255451s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 20
+[t=0.0255504s, 1080 KB] g=36, 1471 evaluated, 503 expanded
+[t=0.0256319s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 19
+[t=0.0256381s, 1080 KB] g=37, 1477 evaluated, 504 expanded
+[t=0.0262823s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 18
+[t=0.0262895s, 1080 KB] g=42, 1525 evaluated, 530 expanded
+[t=0.0291619s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 17
+[t=0.0291764s, 1080 KB] g=51, 1740 evaluated, 625 expanded
+[t=0.0292145s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 16
+[t=0.0292211s, 1080 KB] g=52, 1742 evaluated, 626 expanded
+[t=0.0292744s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 15
+[t=0.0292805s, 1080 KB] g=54, 1746 evaluated, 628 expanded
+[t=0.0294376s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 14
+[t=0.0294441s, 1080 KB] g=56, 1758 evaluated, 631 expanded
+[t=0.0299508s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 13
+[t=0.0299609s, 1080 KB] g=56, 1798 evaluated, 647 expanded
+[t=0.0304085s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 12
+[t=0.0304185s, 1080 KB] g=62, 1831 evaluated, 666 expanded
+[t=0.0327165s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 11
+[t=0.032727s, 1080 KB] g=71, 2007 evaluated, 759 expanded
+[t=0.0327598s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 10
+[t=0.032767s, 1080 KB] g=72, 2009 evaluated, 760 expanded
+[t=0.0328003s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 9
+[t=0.0328066s, 1080 KB] g=74, 2011 evaluated, 762 expanded
+[t=0.0329558s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 8
+[t=0.0329622s, 1080 KB] g=76, 2024 evaluated, 766 expanded
+[t=0.0330914s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 7
+[t=0.0330976s, 1080 KB] g=78, 2036 evaluated, 769 expanded
+[t=0.0331386s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 6
+[t=0.0331448s, 1080 KB] g=80, 2039 evaluated, 771 expanded
+[t=0.0331636s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 5
+[t=0.0331693s, 1080 KB] g=81, 2040 evaluated, 772 expanded
+[t=0.033189s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 4
+[t=0.0331944s, 1080 KB] g=82, 2041 evaluated, 773 expanded
+[t=0.0332122s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 3
+[t=0.0332175s, 1080 KB] g=83, 2042 evaluated, 774 expanded
+[t=0.0332784s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 2
+[t=0.0332847s, 1080 KB] g=84, 2048 evaluated, 775 expanded
+[t=0.0333071s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 1
+[t=0.0333126s, 1080 KB] g=85, 2049 evaluated, 776 expanded
+[t=0.0333685s, 1080 KB] New best heuristic value for ff(transform = adapt_costs(cost_type = plusone)): 0
+[t=0.0333745s, 1080 KB] g=86, 2055 evaluated, 777 expanded
+[t=0.0333829s, 1080 KB] Solution found!
+[t=0.033393s, 1080 KB] Actual search time: 0.0270856s
+pick_tool_from_rack v15 (1)
+operator_load_beam v1 (1)
+pick_beam_with_gripper v1 v15 (1)
+beam_placement_without_clamp v1 v17 v15 (1)
+retract_gripper_from_beam v1 v15 (1)
+operator_load_beam v2 (1)
+pick_beam_with_gripper v2 v15 (1)
+beam_placement_without_clamp v2 v18 v15 (1)
+retract_gripper_from_beam v2 v15 (1)
+operator_load_beam v3 (1)
+place_tool_at_rack v15 (1)
+pick_tool_from_rack v12 (1)
+place_clamp_to_structure v12 v1 v3 (1)
+pick_tool_from_rack v13 (1)
+place_clamp_to_structure v13 v2 v3 (1)
+pick_tool_from_rack v15 (1)
+pick_beam_with_gripper v3 v15 (1)
+beam_placement_with_clamps v3 v19 v15 (1)
+retract_gripper_from_beam v3 v15 (1)
+operator_load_beam v4 (1)
+place_tool_at_rack v15 (1)
+pick_clamp_from_structure v12 v1 v3 (1)
+place_clamp_to_structure v12 v1 v4 (1)
+pick_clamp_from_structure v13 v2 v3 (1)
+place_clamp_to_structure v13 v2 v4 (1)
+pick_tool_from_rack v15 (1)
+pick_beam_with_gripper v4 v15 (1)
+beam_placement_with_clamps v4 v20 v15 (1)
+retract_gripper_from_beam v4 v15 (1)
+operator_load_beam v5 (1)
+place_tool_at_rack v15 (1)
+pick_clamp_from_structure v12 v1 v4 (1)
+place_tool_at_rack v12 (1)
+pick_clamp_from_structure v13 v2 v4 (1)
+place_tool_at_rack v13 (1)
+pick_tool_from_rack v15 (1)
+pick_beam_with_gripper v5 v15 (1)
+beam_placement_without_clamp v5 v21 v15 (1)
+retract_gripper_from_beam v5 v15 (1)
+operator_load_beam v6 (1)
+place_tool_at_rack v15 (1)
+pick_tool_from_rack v10 (1)
+place_clamp_to_structure v10 v5 v6 (1)
+pick_tool_from_rack v11 (1)
+place_clamp_to_structure v11 v1 v6 (1)
+pick_tool_from_rack v14 (1)
+pick_beam_with_gripper v6 v14 (1)
+beam_placement_with_clamps v6 v22 v14 (1)
+retract_gripper_from_beam v6 v14 (1)
+operator_load_beam v7 (1)
+place_tool_at_rack v14 (1)
+pick_clamp_from_structure v10 v5 v6 (1)
+place_tool_at_rack v10 (1)
+pick_clamp_from_structure v11 v1 v6 (1)
+place_tool_at_rack v11 (1)
+pick_tool_from_rack v15 (1)
+pick_beam_with_gripper v7 v15 (1)
+beam_placement_without_clamp v7 v23 v15 (1)
+retract_gripper_from_beam v7 v15 (1)
+operator_load_beam v8 (1)
+place_tool_at_rack v15 (1)
+pick_tool_from_rack v10 (1)
+place_clamp_to_structure v10 v2 v8 (1)
+pick_tool_from_rack v11 (1)
+place_clamp_to_structure v11 v7 v8 (1)
+pick_tool_from_rack v14 (1)
+pick_beam_with_gripper v8 v14 (1)
+beam_placement_with_clamps v8 v24 v14 (1)
+retract_gripper_from_beam v8 v14 (1)
+operator_load_beam v9 (1)
+place_tool_at_rack v14 (1)
+pick_clamp_from_structure v10 v2 v8 (1)
+place_clamp_to_structure v10 v5 v9 (1)
+pick_clamp_from_structure v11 v7 v8 (1)
+place_clamp_to_structure v11 v7 v9 (1)
+pick_tool_from_rack v15 (1)
+pick_beam_with_gripper v9 v15 (1)
+beam_placement_with_clamps v9 v25 v15 (1)
+retract_gripper_from_beam v9 v15 (1)
+place_tool_at_rack v15 (1)
+pick_clamp_from_structure v10 v5 v9 (1)
+place_tool_at_rack v10 (1)
+pick_clamp_from_structure v11 v7 v9 (1)
+place_tool_at_rack v11 (1)
+[t=0.0333981s, 1080 KB] Plan length: 84 step(s).
+[t=0.0333981s, 1080 KB] Plan cost: 84
+[t=0.0333981s, 1080 KB] Expanded 778 state(s).
+[t=0.0333981s, 1080 KB] Reopened 0 state(s).
+[t=0.0333981s, 1080 KB] Evaluated 2055 state(s).
+[t=0.0333981s, 1080 KB] Evaluations: 2055
+[t=0.0333981s, 1080 KB] Generated 3045 state(s).
+[t=0.0333981s, 1080 KB] Dead ends: 581 state(s).
+[t=0.0333981s, 1080 KB] Number of registered states: 2055
+[t=0.0333981s, 1080 KB] Int hash set load factor: 2055/4096 = 0.501709
+[t=0.0333981s, 1080 KB] Int hash set resizes: 12
+[t=0.0333981s, 1080 KB] Search time: 0.0271929s
+[t=0.0333981s, 1080 KB] Total time: 0.0333981s
+Solution found.
+Search runtime: 0.071
+Plans: ['sas_plan']
+Total runtime: 0.082
+Summary: {complexity: 1, cost: 84.000, evaluations: 111, iterations: 2, length: 84, run_time: 0.415, sample_time: 0.001, search_time: 0.414, solutions: 1, solved: True, timeout: False}
+         614859 function calls (607979 primitive calls) in 0.429 seconds
 
    Ordered by: internal time
-   List reduced from 1042 to 25 due to restriction <25>
+   List reduced from 1058 to 25 due to restriction <25>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        2    0.089    0.045    0.089    0.045 {method 'read' of '_io.BufferedReader' objects}
-        2    0.028    0.014    0.029    0.015 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\simplify.py:106(<listcomp>)
-    21993    0.012    0.000    0.014    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
-        2    0.009    0.005    0.056    0.028 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
-     9437    0.009    0.000    0.014    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
-        2    0.008    0.004    0.065    0.032 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
-     6130    0.008    0.000    0.017    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
-     6721    0.008    0.000    0.009    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
-7064/5842    0.008    0.000    0.044    0.000 {built-in method builtins.sorted}
-    26405    0.007    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
-     3571    0.007    0.000    0.013    0.000 {built-in method builtins.print}
-    23136    0.006    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
-     1942    0.005    0.000    0.018    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
-    11568    0.005    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
-     1979    0.004    0.000    0.025    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
-    33812    0.004    0.000    0.006    0.000 {method 'get' of 'dict' objects}
-    11277    0.004    0.000    0.007    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
-    45479    0.004    0.000    0.004    0.000 {built-in method builtins.isinstance}
-        2    0.003    0.002    0.003    0.002 {built-in method _winapi.CreateProcess}
-      800    0.003    0.000    0.010    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
-    10219    0.003    0.000    0.006    0.000 C:\Users\harry\miniconda3\envs\itj\lib\encodings\cp1252.py:18(encode)
-    45044    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
-    22554    0.003    0.000    0.003    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
-      254    0.003    0.000    0.011    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:208(translate_strips_operator_aux)
-    10219    0.003    0.000    0.003    0.000 {built-in method _codecs.charmap_encode}
+        2    0.087    0.044    0.087    0.044 {method 'read' of '_io.BufferedReader' objects}
+        2    0.027    0.014    0.028    0.014 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\simplify.py:278(apply_to_init)
+    21576    0.013    0.000    0.016    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:228(__init__)
+6832/5651    0.010    0.000    0.054    0.000 {built-in method builtins.sorted}
+    22130    0.009    0.000    0.009    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:240(key)
+     9315    0.009    0.000    0.014    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:289(push)
+        2    0.009    0.005    0.057    0.028 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:300(compute_model)
+        2    0.009    0.004    0.070    0.035 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\instantiate.py:40(instantiate)
+    25104    0.009    0.000    0.009    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:232(__eq__)
+     5976    0.008    0.000    0.018    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:272(instantiate)
+     6599    0.007    0.000    0.008    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\build_model.py:55(prepare_effect)
+    11065    0.007    0.000    0.016    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:243(__lt__)
+     3410    0.006    0.000    0.010    0.000 {built-in method builtins.print}
+     1881    0.006    0.000    0.019    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:27(instantiate)
+        2    0.005    0.003    0.005    0.003 {built-in method _winapi.CreateProcess}
+     1979    0.005    0.000    0.027    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\actions.py:66(instantiate)
+    33224    0.004    0.000    0.006    0.000 {method 'get' of 'dict' objects}
+    11187    0.004    0.000    0.008    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:69(__lt__)
+    22374    0.004    0.000    0.004    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\axioms.py:65(key)
+    35156    0.004    0.000    0.004    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:16(__hash__)
+     2362    0.004    0.000    0.006    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\pddl\conditions.py:247(__str__)
+    43699    0.004    0.000    0.004    0.000 {method 'append' of 'list' objects}
+      760    0.004    0.000    0.011    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:67(translate_strips_conditions_aux)
+    44756    0.003    0.000    0.004    0.000 {built-in method builtins.isinstance}
+      254    0.003    0.000    0.012    0.000 C:\Users\harry\Documents\code_ws\pb_ws\coop_assembly\external\pddlstream\pddlstream\algorithms\../../downward/builds/release/bin/translate\translate.py:208(translate_strips_operator_aux)
 
 

@@ -5,7 +5,7 @@ from collections import defaultdict
 
 from pddlstream.utils import read, str_from_object, write
 from pddlstream.language.stream import StreamInfo, PartialInputs, WildOutput, DEBUG
-from pddlstream.language.constants import And, PDDLProblem, Equal
+from pddlstream.language.constants import And, PDDLProblem, Equal, TOTAL_COST
 from pddlstream.language.generator import from_gen_fn, from_fn, from_test
 
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -36,7 +36,7 @@ def load_symbolic_json(json_file_name):
     return process
 
 def get_itj_pddl_problem_from_json(json_file_name, debug=False,
-        reset_to_home=True, use_fluents=False, seq_n=None):
+        reset_to_home=True, use_fluents=False, seq_n=None, manipulate_cost=10.0):
     process = load_symbolic_json(json_file_name)
     cprint('Symbolic process json parsed from {}'.format(json_file_name), 'magenta')
 
@@ -46,7 +46,10 @@ def get_itj_pddl_problem_from_json(json_file_name, debug=False,
     else:
         stream_pddl = read(os.path.join(HERE, 'debug_stream_fluents.pddl'))
 
-    init = []
+    init = [
+        Equal(('Cost',), manipulate_cost),
+        Equal((TOTAL_COST,), 0)
+    ]
 
     constant_map = {}
     init.extend([

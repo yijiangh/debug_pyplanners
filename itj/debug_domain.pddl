@@ -40,18 +40,26 @@
     (ToolAtJoint ?tool ?element1 ?element2 ?adhered_element)
     (JointOccupiedByTool ?element1 ?element2 ?adhered_element)
 
+    ; TODO only certified once, once true always true
+    ;; (ToolAssignedToJoint ?element1 ?element2 ?tool)
+
     (AtRack ?object) ; object can be either element or tool
     (Assembled ?element)
 
     ;; * derived
-    (Connected ?element)
+    ;; (Connected ?element)
     (JointMade ?e1 ?e2)
 
     ;; (ClampOrScrewDriver ?tool)
+    ;; ! switch for forcing all sd to be returned to racks before doing anything else
     (AllScrewDriversNotOccupied)
 
     (ExistNoClampAtOneAssembledJoints ?element)
     (ExistNoScrewDriverAtOneAssembledJoints ?element)
+  )
+
+  (:functions
+    (Cost)
   )
 
   (:action pick_beam_with_gripper
@@ -66,7 +74,7 @@
                     (Element ?element)
                     (AtRack ?element)
                     ; ! assembly state precondition
-                    (Connected ?element)
+                    ;; (Connected ?element)
                     ; ! e2 must be assembled before e encoded in the given partial ordering
                     (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
                     ; ! tool state precondition
@@ -90,7 +98,7 @@
                     (Attached ?element)
                     (ClampedElement ?element)
                     ; ! assembly state precondition
-                    (Connected ?element)
+                    ;; (Connected ?element)
                     ; ! tool state precondition
                     ; ? all joints with assembled elements have tools occipied
                     (not (ExistNoClampAtOneAssembledJoints ?element))
@@ -132,9 +140,10 @@
                     (Attached ?element)
                     (ScrewedWithGripperElement ?element)
                     ; ! tool state
+                    ; all assembled joints are occupied by screw drivers
                     (not (ExistNoScrewDriverAtOneAssembledJoints ?element))
                     ; ! assembly state precondition
-                    (Connected ?element)
+                    ;; (Connected ?element)
                     ; ! e2 must be assembled before e encoded in the given partial ordering
                     (forall (?ei) (imply (Order ?ei ?element) (Assembled ?ei)))
                     ; ! sampled
@@ -209,6 +218,7 @@
                  (JointOccupiedByTool ?element1 ?element2 ?element2)
                  (not (ToolNotOccupiedOnJoint ?tool))
                  (not (AtRack ?tool))
+                ;;  (ToolAssignedToJoint ?element1 ?element2 ?tool)
             )
   )
 
@@ -239,6 +249,7 @@
     :effect (and (not (Attached ?tool))
                  (RobotToolChangerEmpty)
                  (AtRack ?tool)
+                 (increase (total-cost) (Cost))
             )
   )
   
@@ -267,11 +278,12 @@
                  (ToolAtJoint ?tool ?element1 ?element2 ?element1)
                  (JointOccupiedByTool ?element1 ?element2 ?element1)
                  (not (ToolNotOccupiedOnJoint ?tool))
+                ;;  (ToolAssignedToJoint ?element1 ?element2 ?tool)
                  )
   )
 
   (:action pick_clamp_from_structure
-    :parameters (?tool ?element1 ?element2) ; ?conf1 ?conf2 ?traj)
+    :parameters (?tool ?element1 ?element2)
     :precondition (and
                     (AllScrewDriversNotOccupied)
                     (RobotToolChangerEmpty)
@@ -328,17 +340,17 @@
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  (:derived (Connected ?element)
-   (or (GroundContactElement ?element)
-       (exists (?ei) (and 
-                          (Element ?ei)
-                          (Joint ?ei ?element)
-                          (Assembled ?ei)
-                          (Connected ?ei)
-                     )
-       )
-   )
-  )
+  ;; (:derived (Connected ?element)
+  ;;  (or (GroundContactElement ?element)
+  ;;      (exists (?ei) (and 
+  ;;                         (Element ?ei)
+  ;;                         (Joint ?ei ?element)
+  ;;                         (Assembled ?ei)
+  ;;                         (Connected ?ei)
+  ;;                    )
+  ;;      )
+  ;;  )
+  ;; )
 
   (:derived (JointMade ?e1 ?e2)
     (imply (Joint ?e1 ?e2) 
